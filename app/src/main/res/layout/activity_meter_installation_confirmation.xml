@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_meter_installation_confirmation"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.wareproz.mac.kedco.MeterInstallationConfirmation">
+
+    <ImageView
+        android:layout_height="80dp"
+        android:id="@+id/imageView3"
+        android:src="@drawable/warning"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Confirm that your input is correct "
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView3"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="18dp"
+        android:id="@+id/textView2" />
+
+    <RelativeLayout
+        android:id="@+id/r1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/textView2"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:text="Customer Name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView5"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="Iweama Chukwuma Patrick Albert"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/custName"
+            android:layout_marginRight="10dp"
+            android:layout_alignTop="@+id/textView5"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/r2"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r1"
+        android:layout_alignParentStart="true"
+        android:layout_marginTop="10dp">
+
+        <TextView
+            android:text="Customer Acc No"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView5"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="AC012342"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/custAccNo"
+            android:layout_marginRight="10dp"
+            android:layout_alignTop="@+id/textView5"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold" />
+    </RelativeLayout>
+
+    <RelativeLayout
+        android:id="@+id/r3"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/r2"
+        android:layout_marginTop="10dp"
+        android:layout_centerHorizontal="true">
+
+        <TextView
+            android:text="Meter Number"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp"
+            android:layout_marginLeft="10dp"
+            android:id="@+id/textView5"
+            android:layout_alignParentStart="true" />
+
+        <TextView
+            android:text="20-348"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/billPeriod"
+            android:layout_marginRight="10dp"
+            android:layout_alignTop="@+id/textView5"
+            android:layout_alignParentEnd="true"
+            android:textStyle="bold" />
+
+    </RelativeLayout>
+
+    <SeekBar
+        android:id="@+id/seekBar1"
+        android:layout_width="300dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="35dp"
+        android:thumb="@drawable/thum"
+        android:background="@drawable/swipe"
+        android:progressDrawable="@android:color/transparent"
+        android:thumbOffset="20dp"
+        android:layout_below="@+id/r3"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

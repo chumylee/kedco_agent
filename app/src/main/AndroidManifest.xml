@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.wareproz.mac.kedco">
+
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".SplashScreen"
+            android:theme="@style/Theme.AppCompat.NoActionBar">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity
+            android:name=".Login"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".HomeActivity"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".BillDistribution"
+            android:label="Bill Distribution"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".BillDistributionConfirmation"
+            android:label="Confirm Bill"
+            android:parentActivityName=".BillDistribution" />
+        <activity
+            android:name=".Register"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity
+            android:name=".MeterReading"
+            android:label="Meter Reading"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".MeterReadingConfirmation"
+            android:label="Confirm Meter Reading"
+            android:parentActivityName=".MeterReading" />
+        <activity
+            android:name=".MeterInstallation"
+            android:label="Meter Installation"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".MeterInstallationConfirmation"
+            android:label="Meter Installation Confirmation"
+            android:parentActivityName=".MeterInstallation" />
+        <activity
+            android:name=".DisconnectionRequest"
+            android:label="Disconnection Request"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".DisconnectionRequestConfirmation"
+            android:label="Disconnection Request Confirmation"
+            android:parentActivityName=".DisconnectionRequest" />
+        <activity
+            android:name=".ReconnectionRequest"
+            android:label="Reconnection Request"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".ReconnectionRequestConfirmation"
+            android:label="Reconnection Request Confirmation"
+            android:parentActivityName=".ReconnectionRequest" />
+        <activity
+            android:name=".TariffAdjustmentRequest"
+            android:label="Tariff Adjustment Request"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".TariffAdjustmentConfirmation"
+            android:label="Tariff Adjustment Confirmation"
+            android:parentActivityName=".TariffAdjustmentRequest" />
+        <activity
+            android:name=".MeterBypassCheck"
+            android:label="Meter Bypass Check"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".MeterBypassConfirmation"
+            android:label="Meter Bypass Confirmation"
+            android:parentActivityName=".MeterBypassCheck" />
+        <activity
+            android:name=".FaultReporting"
+            android:label="Fault Reporting"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".FaultReportingConfirmation"
+            android:label="Fault Reporting Confirmation"
+            android:parentActivityName=".FaultReporting" />
+        <activity
+            android:name=".Disconnection"
+            android:label="Disconnection"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".Reconnection"
+            android:label="Reconnection"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".TariffAdjustment"
+            android:label="Tariff Adjustment"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".MeterBypassConf"
+            android:label="Confirm Bypass"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".FaultHandling"
+            android:label="Fault Handling"
+            android:parentActivityName=".HomeActivity" />
+
+        <service android:name=".FirebaseMessagingService">
+            <intent-filter>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+        <service android:name=".FirebaseInstanceIDService">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT" />
+            </intent-filter>
+        </service>
+
+        <activity
+            android:name=".Unlocker"
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+        <activity android:name=".BaseActivity" />
+    </application>
+
+</manifest>

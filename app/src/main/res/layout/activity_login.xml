@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_login"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.wareproz.mac.kedco.Login">
+
+    <ImageView
+        android:layout_height="100dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/gravy_logo"
+        android:layout_width="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="63dp" />
+
+    <TextView
+        android:text="Registration"
+        android:layout_width="wrap_content"
+        android:layout_height="50dp"
+        android:layout_alignParentBottom="true"
+        android:id="@+id/textView3"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentStart="true"
+        android:background="@drawable/textline"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:textSize="16sp" />
+
+    <Button
+        android:id="@+id/login"
+        style="?android:textAppearanceSmall"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:text="SIGN IN"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:background="@drawable/button_bckgrnd"
+        android:layout_below="@+id/password"
+        android:layout_alignStart="@+id/password" />
+
+    <TextView
+        android:text="Login in to access you account"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:id="@+id/textView9"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_height="45dp"
+        android:inputType="numberPassword"
+        android:ems="10"
+        android:layout_marginTop="19dp"
+        android:id="@+id/password"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="300dp"
+        android:hint="Your Pin"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:maxLength="4"
+        android:layout_below="@+id/usernamex"
+        android:layout_alignStart="@+id/usernamex" />
+
+    <EditText
+        android:layout_height="45dp"
+        android:inputType="number"
+        android:ems="10"
+        android:id="@+id/usernamex"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="300dp"
+        android:hint="Staff Id"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:maxLength="16"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="28dp" />
+
+</RelativeLayout>

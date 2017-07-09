@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_unlocker"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg"
+    tools:context="com.wareproz.mac.kedco.Unlocker">
+
+    <Button
+        android:id="@+id/login"
+        style="?android:textAppearanceSmall"
+        android:layout_width="300dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="30dp"
+        android:text="Unlock"
+        android:textStyle="bold"
+        android:textColor="#FFF"
+        android:textSize="20dp"
+        android:background="@drawable/button_bckgrnd"
+        android:layout_below="@+id/password"
+        android:layout_alignStart="@+id/password" />
+
+    <TextView
+        android:text="Account locked for security reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/imageView2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:id="@+id/textView9"
+        android:textStyle="bold"
+        android:textSize="18sp" />
+
+    <EditText
+        android:layout_height="45dp"
+        android:inputType="numberPassword"
+        android:ems="10"
+        android:layout_marginTop="40dp"
+        android:id="@+id/password"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="300dp"
+        android:hint="Your Pin"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:maxLength="4"
+        android:layout_below="@+id/textView9"
+        android:layout_centerHorizontal="true" />
+
+    <ImageView
+        android:layout_height="100dp"
+        android:id="@+id/imageView2"
+        android:src="@drawable/gravy_logo"
+        android:layout_width="wrap_content"
+        android:layout_marginTop="92dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
+
+</RelativeLayout>

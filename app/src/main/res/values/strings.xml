@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">KEDCO WORKSPACE</string>
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+
+    <string name="action_settings">Settings</string>
+    <string name="title_activity_home">Home</string>
+    <string name="title_activity_bill_distribution">Bill Distribution</string>
+    <string name="title_activity_main">MainActivity</string>
+</resources>

@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "228184287731",
+    "firebase_url": "https://kedco-60669.firebaseio.com",
+    "project_id": "kedco-60669",
+    "storage_bucket": "kedco-60669.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:228184287731:android:12a10e2633479987",
+        "android_client_info": {
+          "package_name": "com.wareproz.mac.kedco"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "228184287731-6g9434hnvepqrsq9aj39ukngcsqang3t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD_WJ4lsPlwU_qOTHeDBD6Ec6oTmKLRha4"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

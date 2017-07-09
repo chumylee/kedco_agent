@@ -1,0 +1,137 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/activity_register"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#fff"
+    tools:context="com.wareproz.mac.kedco.Register">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentStart="true">
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="512dp"
+                android:background="@drawable/bg">
+
+                <ImageView
+                    android:layout_height="100dp"
+                    android:id="@+id/imageView2"
+                    android:src="@drawable/gravy_logo"
+                    android:layout_width="wrap_content"
+                    android:layout_marginTop="33dp"
+                    android:layout_alignParentTop="true"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:text="Register as a staff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/imageView2"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="33dp"
+                    android:id="@+id/textView9"
+                    android:textStyle="bold"
+                    android:textSize="18sp" />
+
+                <EditText
+                    android:layout_height="45dp"
+                    android:inputType="number"
+                    android:ems="10"
+                    android:id="@+id/staffid"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_width="300dp"
+                    android:hint="Staff Id"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/textView9"
+                    android:layout_centerHorizontal="true"
+                    android:maxLength="8"/>
+
+                <EditText
+                    android:layout_height="45dp"
+                    android:inputType="numberPassword"
+                    android:ems="10"
+                    android:id="@+id/password"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_width="300dp"
+                    android:hint="Pin"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/staffid"
+                    android:layout_centerHorizontal="true"
+                    android:maxLength="4" />
+
+                <EditText
+                    android:layout_height="45dp"
+                    android:inputType="numberPassword"
+                    android:ems="10"
+                    android:id="@+id/password2"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_width="300dp"
+                    android:hint="Confirm Pin"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/password"
+                    android:layout_centerHorizontal="true"
+                    android:maxLength="4" />
+
+                <EditText
+                    android:layout_height="45dp"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/email"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_width="300dp"
+                    android:hint="Email Address"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/password2"
+                    android:layout_centerHorizontal="true" />
+
+                <EditText
+                    android:layout_height="45dp"
+                    android:inputType="textEmailAddress"
+                    android:ems="10"
+                    android:id="@+id/phone"
+                    android:background="@drawable/rounded_edittext"
+                    android:layout_width="300dp"
+                    android:hint="Phone Number"
+                    android:gravity="center_vertical|center_horizontal|center"
+                    android:layout_marginTop="15dp"
+                    android:layout_below="@+id/email"
+                    android:layout_centerHorizontal="true" />
+
+                <Button
+                    android:id="@+id/login"
+                    style="?android:textAppearanceSmall"
+                    android:layout_width="300dp"
+                    android:layout_height="45dp"
+                    android:layout_marginTop="30dp"
+                    android:text="Register"
+                    android:textStyle="bold"
+                    android:textColor="#FFF"
+                    android:textSize="20dp"
+                    android:background="@drawable/button_bckgrnd"
+                    android:layout_below="@+id/phone"
+                    android:layout_centerHorizontal="true" />
+
+                <TextView
+                    android:text="Already have an account?"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_below="@+id/login"
+                    android:layout_centerHorizontal="true"
+                    android:layout_marginTop="15dp"
+                    android:layout_marginBottom="30dp"
+                    android:id="@+id/tologin"
+                    android:textStyle="bold"
+                    android:textSize="14sp" />
+
+            </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>
