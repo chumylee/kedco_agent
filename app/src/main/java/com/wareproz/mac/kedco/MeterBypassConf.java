@@ -34,6 +34,7 @@ public class MeterBypassConf extends BaseActivity {
     SessionManagement session;
     private ProgressDialog pDialog;
     private ListView lv;
+    private boolean meterBypassed = false;
 
     // URL to get contacts JSON
     private static String url = "meterbypass.php";
@@ -188,11 +189,12 @@ public class MeterBypassConf extends BaseActivity {
                     selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MeterBypassConf.this);
-                    alertDialogBuilder.setMessage("Are you sure, You have performed the required action for the customer");
+                    alertDialogBuilder.setMessage("Is this meter bypassed by the customer?");
                     alertDialogBuilder.setPositiveButton("yes",
                             new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface arg0, int arg1) {
+                                    meterBypassed = true;
                                     new MeterBypassConf.confirmer().execute();
                                 }
                             });
@@ -200,12 +202,13 @@ public class MeterBypassConf extends BaseActivity {
                     alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int which) {
                             //finish();
+                            meterBypassed = false;
+                            new MeterBypassConf.confirmer().execute();
                         }
                     });
 
                     AlertDialog alertDialog = alertDialogBuilder.create();
                     alertDialog.show();
-
 
                 }
             });
@@ -233,8 +236,7 @@ public class MeterBypassConf extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "confirm.php?id="+ selecteditem +"&what=meterbypass";
-
+            String url = "confirm.php?id="+ selecteditem +"&what=meterbypass&bypass="+meterBypassed;
             String jsonStr = sh.makeServiceCall(url);
 
             if (jsonStr != null) {
