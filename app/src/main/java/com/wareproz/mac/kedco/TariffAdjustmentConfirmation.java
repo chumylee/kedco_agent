@@ -108,7 +108,7 @@ public class TariffAdjustmentConfirmation extends BaseActivity implements SeekBa
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "tariffAdjustmentSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&bill_period2="+ billDate2;
+            String url = "tariffAdjustmentSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&bill_period2="+ billDate2 +"&salesrep="+ cid;
             String jsonStr = sh.makeServiceCall(url);
 
 
@@ -166,7 +166,7 @@ public class TariffAdjustmentConfirmation extends BaseActivity implements SeekBa
 
             }else{
                 //
-                Toast.makeText(TariffAdjustmentConfirmation.this,"Unable to Submit",Toast.LENGTH_LONG).show();
+                Toast.makeText(TariffAdjustmentConfirmation.this,msg,Toast.LENGTH_LONG).show();
                 finish();
             }
         }
