@@ -104,7 +104,7 @@ protected void onCreate(Bundle savedInstanceState) {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "disconnectionRequestSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate;
+            String url = "disconnectionRequestSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&salesrep="+ cid;
             String jsonStr = sh.makeServiceCall(url);
 
 
