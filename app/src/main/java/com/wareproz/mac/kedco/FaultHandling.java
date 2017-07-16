@@ -18,7 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class FaultHandling extends BaseActivity {
@@ -89,9 +93,22 @@ public class FaultHandling extends BaseActivity {
                         JSONObject c = contacts.getJSONObject(i);
 
                         String id = c.getString("id");
-                        String name = c.getString("customername");
-                        String email = c.getString("accountnumber");
-                        String address = c.getString("address");
+                        String name = "Customer Name: "+ c.getString("customername");
+                        String email = "Account Number: "+ c.getString("accountnumber");
+                        String address = "Customer Address: "+c.getString("address");
+                        String nature = "Nature of Fault: "+c.getString("nature");
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                        SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                        Date parsedDate = null;
+                        try {
+                            parsedDate = formatter.parse(c.getString("date"));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(parsedDate);
+
+                        String date = "Report date/time: " + formatter2.format(parsedDate);
                         //String gender = c.getString("gender");
 
                         // Phone node is JSON Object
@@ -108,6 +125,8 @@ public class FaultHandling extends BaseActivity {
                         contact.put("name", name);
                         contact.put("email", email);
                         contact.put("mobile", address);
+                        contact.put("date", date);
+                        contact.put("nature", nature);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -154,8 +173,8 @@ public class FaultHandling extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     FaultHandling.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.id});
+                    "mobile", "nature", "date", "id"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.date, R.id.id});
 
             lv.setAdapter(adapter);
 
