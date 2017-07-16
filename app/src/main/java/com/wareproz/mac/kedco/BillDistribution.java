@@ -100,7 +100,7 @@ public class BillDistribution extends BaseActivity {
 
                     month = datepicked.getMonth();
                     year =  datepicked.getYear();
-                    billDate = Integer.toString(month) + "/" + Integer.toString(year);
+                    billDate = Integer.toString(month + 1) + "/" + Integer.toString(year);
 
                     Intent changer = new Intent(BillDistribution.this, BillDistributionConfirmation.class);
                     changer.putExtra("customerId", customerId);
