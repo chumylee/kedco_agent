@@ -70,7 +70,7 @@ public class MeterBypassConfirmation extends BaseActivity implements SeekBar.OnS
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if(i > 98)
+        if(i == 100)
         {
             new MeterBypassConfirmation.confirmer().execute();
         }

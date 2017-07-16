@@ -38,6 +38,8 @@ public class SessionManagement {
     public static final String EMAIL = "email";
     public static final String PHONE = "phone";
     public static final String CUSTOMERS = "customers";
+    public static final String MDCUSTOMERS = "mdcustomers";
+    public static final String GRID = "grid";
 
 
     // Constructor
@@ -54,7 +56,7 @@ public class SessionManagement {
      * Create login session
      * */
     public void createLoginSession(String id, String fullname,String role
-            , String staff_id,String email,String phone,String customers){
+            , String staff_id,String email,String phone,String customers,String mdcustomers,String grid){
         // Storing login value as TRUE
         editor.putBoolean(IS_LOGIN, true);
         // Storing email in pref
@@ -65,6 +67,8 @@ public class SessionManagement {
         editor.putString(EMAIL, email);
         editor.putString(PHONE, phone);
         editor.putString(CUSTOMERS, customers);
+        editor.putString(MDCUSTOMERS, mdcustomers);
+        editor.putString(GRID, grid);
         // commit changes
         editor.commit();
 
@@ -117,7 +121,8 @@ public class SessionManagement {
         user.put(EMAIL, pref.getString(EMAIL, null));
         user.put(PHONE, pref.getString(PHONE, null));
         user.put(CUSTOMERS, pref.getString(CUSTOMERS, null));
-
+        user.put(MDCUSTOMERS, pref.getString(MDCUSTOMERS, null));
+        user.put(GRID, pref.getString(GRID, null));
 
         // return user
         return user;

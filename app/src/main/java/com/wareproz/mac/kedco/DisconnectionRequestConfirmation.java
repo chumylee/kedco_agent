@@ -65,7 +65,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if(i > 98)
+        if(i == 100)
         {
             new DisconnectionRequestConfirmation.confirmer().execute();
         }

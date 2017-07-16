@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/activity_tariff_adjustment_confirmation"
+    android:id="@+id/activity_meter_reading_confirmation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/bg"
-    tools:context="com.wareproz.mac.kedco.TariffAdjustmentConfirmation">
+    tools:context="com.wareproz.mac.kedco.MeterReadingConfirmation">
 
     <ImageView
         android:layout_height="80dp"
@@ -34,7 +34,7 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:text="Customer Name"
+            android:text="Feeder Type"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -64,7 +64,7 @@
         android:layout_marginTop="10dp">
 
         <TextView
-            android:text="Customer Acc No"
+            android:text="Feeder Name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -93,7 +93,7 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:text="Wrong Tariff"
+            android:text="Grid Meter Reading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -114,36 +114,6 @@
 
     </RelativeLayout>
 
-    <RelativeLayout
-        android:id="@+id/r4"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/r3"
-        android:layout_marginTop="10dp"
-        android:layout_centerHorizontal="true">
-
-        <TextView
-            android:text="Correct Tariff"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="10dp"
-            android:layout_marginBottom="10dp"
-            android:layout_marginLeft="10dp"
-            android:id="@+id/textView5"
-            android:layout_alignParentStart="true" />
-
-        <TextView
-            android:text="20-348"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/billPeriod2"
-            android:layout_marginRight="10dp"
-            android:layout_alignTop="@+id/textView5"
-            android:layout_alignParentEnd="true"
-            android:textStyle="bold" />
-
-    </RelativeLayout>
-
     <SeekBar
         android:id="@+id/seekBar1"
         android:layout_width="300dp"
@@ -153,7 +123,7 @@
         android:background="@drawable/swipe"
         android:progressDrawable="@android:color/transparent"
         android:thumbOffset="20dp"
-        android:layout_below="@+id/r4"
+        android:layout_below="@+id/r3"
         android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

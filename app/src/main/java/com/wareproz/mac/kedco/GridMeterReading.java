@@ -16,11 +16,13 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 
-public class MeterReading extends BaseActivity {
+public class GridMeterReading extends BaseActivity {
 
     AutoCompleteTextView accountno;
     TextView custName,inputtext;
@@ -38,7 +40,7 @@ public class MeterReading extends BaseActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meter_reading);
+        setContentView(R.layout.activity_grid_meter_reading);
 
         connectionDetector = new ConnectionDetector(this);
         accountno = (AutoCompleteTextView)findViewById(R.id.accountno);
@@ -67,7 +69,7 @@ public class MeterReading extends BaseActivity {
         grid = user.get(SessionManagement.GRID);
 
         //accountnos = customers.split(",");
-        accountnos = mdcustomers.split(",");
+        accountnos = grid.split(",");
 
         ArrayAdapter adapter = new
                 ArrayAdapter(this,android.R.layout.simple_list_item_1,accountnos);
@@ -82,10 +84,10 @@ public class MeterReading extends BaseActivity {
                 customerAccNo = accountno.getText().toString();
                 if(customerAccNo.trim().length() > 0 ){
 
-                    new MeterReading.GetCustomerDetails().execute();
+                    new GridMeterReading.GetCustomerDetails().execute();
 
                 }else{
-                    Toast.makeText(MeterReading.this,"Enter MD Customer Account number first",Toast.LENGTH_LONG).show();
+                    Toast.makeText(GridMeterReading.this,"Enter Feeder name first",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -100,7 +102,7 @@ public class MeterReading extends BaseActivity {
 
                     billDate = inputtext.getText().toString();
 
-                    Intent changer = new Intent(MeterReading.this, MeterReadingConfirmation.class);
+                    Intent changer = new Intent(GridMeterReading.this, GridMeterReadingConfirmation.class);
                     changer.putExtra("customerId", customerId);
                     changer.putExtra("customerName", customerName);
                     changer.putExtra("customerAccNo", customerAccNo);
@@ -108,7 +110,7 @@ public class MeterReading extends BaseActivity {
                     startActivity(changer);
 
                 }else{
-                    Toast.makeText(MeterReading.this,"No customer selected",Toast.LENGTH_LONG).show();
+                    Toast.makeText(GridMeterReading.this,"No feeder selected",Toast.LENGTH_LONG).show();
 
                 }
 
@@ -124,8 +126,8 @@ public class MeterReading extends BaseActivity {
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(MeterReading.this);
-            pDialog.setMessage("Getting MD Customer Details ...");
+            pDialog = new ProgressDialog(GridMeterReading.this);
+            pDialog.setMessage("Getting Feeder Details ...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -136,7 +138,12 @@ public class MeterReading extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "getMDCustomerDetails.php?accountno="+ customerAccNo +"&id="+ cid;
+            String url = null;
+            try {
+                url = "getFeederDetails.php?accountno="+ URLEncoder.encode(customerAccNo, "utf-8") +"&id="+ cid;
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             String jsonStr = sh.makeServiceCall(url);
 
             if (jsonStr != null) {
@@ -190,7 +197,7 @@ public class MeterReading extends BaseActivity {
                 custName.setText(customerName);
             }else{
                 //
-                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MeterReading.this);
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(GridMeterReading.this);
                 alertDialogBuilder.setMessage("The entered account number does not exist OR you dont have access the manage that customer");
                 alertDialogBuilder.setPositiveButton("Ok",
                         new DialogInterface.OnClickListener() {

@@ -98,7 +98,7 @@ public class Login extends AppCompatActivity {
 
     private class LoginUser extends AsyncTask<Void, Void, Void> {
 
-        String json_status,id, fullname, role, staff_id, email, phone, msg, customers;
+        String json_status,id, fullname, role, staff_id, email, phone, msg, customers, mdcustomers, grid;
 
         @Override
         protected void onPreExecute() {
@@ -139,6 +139,8 @@ public class Login extends AppCompatActivity {
                     phone = jsonObj.getString("phone");
                     msg = jsonObj.getString("msg");
                     customers = jsonObj.getString("customers");
+                    mdcustomers = jsonObj.getString("mdcustomers");
+                    grid = jsonObj.getString("grid");
 
                     //JSONArray customerz = jsonObj.getJSONArray("customers");
 
@@ -180,7 +182,7 @@ public class Login extends AppCompatActivity {
             //do something with what is returned
             if (json_status.equals("1")){
                 // Creating user login session and store some stuff
-                session.createLoginSession(id,fullname,role,staff_id,email,phone,customers);
+                session.createLoginSession(id,fullname,role,staff_id,email,phone,customers,mdcustomers,grid);
 
                 //store token in preference
                 if(!session.hasToken()) {

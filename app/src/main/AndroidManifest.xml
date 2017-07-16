@@ -40,12 +40,20 @@
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity
             android:name=".MeterReading"
-            android:label="Meter Reading"
+            android:label="MD Meter Reading"
             android:parentActivityName=".HomeActivity" />
         <activity
             android:name=".MeterReadingConfirmation"
-            android:label="Confirm Meter Reading"
+            android:label="Confirm MD Meter Reading"
             android:parentActivityName=".MeterReading" />
+        <activity
+            android:name=".GridMeterReading"
+            android:label="Grid Meter Reading"
+            android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".GridMeterReadingConfirmation"
+            android:label="Confirm Grid Meter Reading"
+            android:parentActivityName=".GridMeterReading" />
         <activity
             android:name=".MeterInstallation"
             android:label="Meter Installation"

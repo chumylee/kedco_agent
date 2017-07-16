@@ -106,79 +106,9 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
                 </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingTop="20dp"
-                    android:onClick="meter_reading"
-                    android:id="@+id/meter_reading"
-                    android:alpha="0.5">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:srcCompat="@drawable/meterreading"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:id="@+id/imageView5" />
-
-                    <TextView
-                        android:text="Meter Reading"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView10"
-                        android:layout_marginTop="12dp"
-                        android:layout_below="@+id/imageView5"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black" />
-
-                </RelativeLayout>
-
-                <RelativeLayout
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:paddingTop="20dp"
-                    android:onClick="meter_installation"
-                    android:id="@+id/meter_installation"
-                    android:alpha="0.5">
-
-                    <ImageView
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        app:srcCompat="@drawable/meterinstallation"
-                        android:layout_alignParentTop="true"
-                        android:layout_centerHorizontal="true"
-                        android:layout_marginTop="15dp"
-                        android:id="@+id/imageView5" />
-
-                    <TextView
-                        android:text="Meter Installation"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:id="@+id/textView10"
-                        android:layout_marginTop="12dp"
-                        android:layout_below="@+id/imageView5"
-                        android:layout_centerHorizontal="true"
-                        android:textSize="16sp"
-                        android:textColor="@android:color/black"
-                        android:textAlignment="center" />
-
-                </RelativeLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:weightSum="3">
-
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -208,7 +138,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -239,7 +170,50 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                </RelativeLayout>
+
+
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:weightSum="3">
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp"
+                    android:onClick="meter_installation"
+                    android:id="@+id/meter_installation"
+                    android:alpha="0.5">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/meterinstallation"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/imageView5" />
+
+                    <TextView
+                        android:text="Meter Installation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView10"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/imageView5"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:textAlignment="center"
+                        android:gravity="center" />
 
                 </RelativeLayout>
 
@@ -271,17 +245,10 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
 
                 </RelativeLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:weightSum="3">
-
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -311,8 +278,17 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
                 </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:weightSum="3">
+
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -333,7 +309,7 @@
                         android:id="@+id/imageView5" />
 
                     <TextView
-                        android:text="Tariff Adjustment Request"
+                        android:text="Tariff Adj. Request"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:id="@+id/textView10"
@@ -342,7 +318,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
 
                 </RelativeLayout>
 
@@ -374,7 +351,41 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
+
+                </RelativeLayout>
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp"
+                    android:onClick="grid_meter_reading"
+                    android:id="@+id/grid_meter_reading"
+                    android:alpha="0.5">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/transform"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/imageView5" />
+
+                    <TextView
+                        android:text="Grid Meter Reading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView10"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/imageView5"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:textAlignment="center"
+                        android:gravity="center" />
 
                 </RelativeLayout>
 
@@ -385,6 +396,38 @@
                 android:layout_height="140dp"
                 android:weightSum="3">
 
+
+                <RelativeLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:paddingTop="20dp"
+                    android:onClick="meter_reading"
+                    android:id="@+id/meter_reading"
+                    android:alpha="0.5">
+
+                    <ImageView
+                        android:layout_width="50dp"
+                        android:layout_height="50dp"
+                        app:srcCompat="@drawable/meterreading"
+                        android:layout_alignParentTop="true"
+                        android:layout_centerHorizontal="true"
+                        android:layout_marginTop="15dp"
+                        android:id="@+id/imageView5" />
+
+                    <TextView
+                        android:text="MD Meter Reading"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:id="@+id/textView10"
+                        android:layout_marginTop="12dp"
+                        android:layout_below="@+id/imageView5"
+                        android:layout_centerHorizontal="true"
+                        android:textSize="16sp"
+                        android:textColor="@android:color/black"
+                        android:gravity="center" />
+
+                </RelativeLayout>
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -414,7 +457,8 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
                 </RelativeLayout>
 
                 <RelativeLayout
@@ -445,9 +489,18 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
 
                 </RelativeLayout>
+
+            </LinearLayout>
+            <LinearLayout
+                android:orientation="horizontal"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:weightSum="3">
+
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -477,17 +530,10 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
 
                 </RelativeLayout>
-
-            </LinearLayout>
-            <LinearLayout
-                android:orientation="horizontal"
-                android:layout_width="match_parent"
-                android:layout_height="140dp"
-                android:weightSum="3">
-
 
                 <RelativeLayout
                     android:layout_width="0dp"
@@ -517,8 +563,10 @@
                         android:layout_centerHorizontal="true"
                         android:textSize="16sp"
                         android:textColor="@android:color/black"
-                        android:textAlignment="center" />
+                        android:textAlignment="center"
+                        android:gravity="center" />
                 </RelativeLayout>
+
 
             </LinearLayout>
 

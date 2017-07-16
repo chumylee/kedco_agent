@@ -15,7 +15,7 @@ import java.util.HashMap;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 
-public class MeterReadingConfirmation extends BaseActivity implements SeekBar.OnSeekBarChangeListener {
+public class GridMeterReadingConfirmation extends BaseActivity implements SeekBar.OnSeekBarChangeListener {
 
     private ProgressDialog pDialog;
     String customerAccNo,customerName,customerId,billDate;
@@ -28,7 +28,7 @@ public class MeterReadingConfirmation extends BaseActivity implements SeekBar.On
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_meter_reading_confirmation);
+        setContentView(R.layout.activity_grid_meter_reading_confirmation);
 
         Bundle bundle = getIntent().getExtras();
         customerId = bundle.getString("customerId");
@@ -69,7 +69,7 @@ public class MeterReadingConfirmation extends BaseActivity implements SeekBar.On
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
         if(i == 100)
         {
-            new MeterReadingConfirmation.confirmer().execute();
+            new GridMeterReadingConfirmation.confirmer().execute();
         }
     }
 
@@ -94,7 +94,7 @@ public class MeterReadingConfirmation extends BaseActivity implements SeekBar.On
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(MeterReadingConfirmation.this);
+            pDialog = new ProgressDialog(GridMeterReadingConfirmation.this);
             pDialog.setMessage("Submitting meter reading ...");
             pDialog.setCancelable(false);
             pDialog.show();
@@ -106,7 +106,7 @@ public class MeterReadingConfirmation extends BaseActivity implements SeekBar.On
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "meterReadingSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&salesrep="+ cid;
+            String url = "gridMeterReadingSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&salesrep="+ cid;
             String jsonStr = sh.makeServiceCall(url);
 
 
@@ -157,14 +157,14 @@ public class MeterReadingConfirmation extends BaseActivity implements SeekBar.On
             //do something with what is returned
             if (json_status.equals("1")){
 
-                Toast.makeText(MeterReadingConfirmation.this,msg,Toast.LENGTH_LONG).show();
+                Toast.makeText(GridMeterReadingConfirmation.this,msg,Toast.LENGTH_LONG).show();
 
-                Intent mIntent = new Intent(MeterReadingConfirmation.this, HomeActivity.class);
+                Intent mIntent = new Intent(GridMeterReadingConfirmation.this, HomeActivity.class);
                 startActivity(mIntent);
 
             }else{
                 //
-                Toast.makeText(MeterReadingConfirmation.this,msg,Toast.LENGTH_LONG).show();
+                Toast.makeText(GridMeterReadingConfirmation.this,msg,Toast.LENGTH_LONG).show();
                 finish();
             }
         }

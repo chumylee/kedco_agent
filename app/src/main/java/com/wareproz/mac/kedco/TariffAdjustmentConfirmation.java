@@ -69,7 +69,7 @@ public class TariffAdjustmentConfirmation extends BaseActivity implements SeekBa
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if(i > 98)
+        if(i == 100)
         {
             new TariffAdjustmentConfirmation.confirmer().execute();
         }

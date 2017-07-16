@@ -25,7 +25,7 @@ public class HomeActivity extends BaseActivity  {
     // Session Manager Class
     SessionManagement session;
     private ProgressDialog pDialog;
-    String id, fullname, role, staff_id, email, phone, customers, unlocker;
+    String id, fullname, role, staff_id, email, phone, customers, mdcustomers, grid , unlocker;
 
 
     //right menu slide
@@ -53,6 +53,9 @@ public class HomeActivity extends BaseActivity  {
         email = user.get(SessionManagement.EMAIL);
         phone = user.get(SessionManagement.PHONE);
         customers = user.get(SessionManagement.CUSTOMERS);
+        mdcustomers = user.get(SessionManagement.MDCUSTOMERS);
+        grid = user.get(SessionManagement.GRID);
+
 
         TextView namefield = (TextView) findViewById(R.id.usersname);
         namefield.setText(fullname);
@@ -70,16 +73,20 @@ public class HomeActivity extends BaseActivity  {
         RelativeLayout meter_bypass_confirmation = (RelativeLayout) findViewById(R.id.meter_bypass_confirmation);
         RelativeLayout fault_reporting = (RelativeLayout) findViewById(R.id.fault_reporting);
         RelativeLayout fault_handling = (RelativeLayout) findViewById(R.id.fault_handling);
+        RelativeLayout grid_meter_reading = (RelativeLayout) findViewById(R.id.grid_meter_reading);
+
+        fault_reporting.setAlpha(1);
 
 
         if (Integer.parseInt(role) == 1){
             bill_distribution.setAlpha(1);
-            meter_reading.setAlpha(1);
             meter_bypass_check.setAlpha(1);
-            fault_reporting.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 2){
+            bill_distribution.setAlpha(1);
+            meter_bypass_check.setAlpha(1);
+
             disconnection_request.setAlpha(1);
             reconnection_request.setAlpha(1);
             tarriff_adjustment_request.setAlpha(1);
@@ -98,6 +105,8 @@ public class HomeActivity extends BaseActivity  {
 
         if (Integer.parseInt(role) == 7){
             meter_installation.setAlpha(1);
+            meter_reading.setAlpha(1);
+            grid_meter_reading.setAlpha(1);
         }
 
 
@@ -110,7 +119,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void bill_distribution(View v) {
 
-        if (Integer.parseInt(role) == 1){
+        if (Integer.parseInt(role) == 1 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, BillDistribution.class);
             startActivity(changer);
         }
@@ -118,7 +127,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void meter_reading(View v) {
 
-        if (Integer.parseInt(role) == 1){
+        if (Integer.parseInt(role) == 7){
             Intent changer = new Intent(this, MeterReading.class);
             startActivity(changer);
         }
@@ -185,7 +194,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void meter_bypass_check(View v) {
 
-        if (Integer.parseInt(role) == 1){
+        if (Integer.parseInt(role) == 1  || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, MeterBypassCheck.class);
             startActivity(changer);
         }
@@ -203,10 +212,10 @@ public class HomeActivity extends BaseActivity  {
 
     public void fault_reporting(View v) {
 
-        if (Integer.parseInt(role) == 1){
+        //if (Integer.parseInt(role) == 1  || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, FaultReporting.class);
             startActivity(changer);
-        }
+        //}
 
     }
 
@@ -214,6 +223,15 @@ public class HomeActivity extends BaseActivity  {
 
         if (Integer.parseInt(role) == 3){
             Intent changer = new Intent(this, FaultHandling.class);
+            startActivity(changer);
+        }
+
+    }
+
+    public void grid_meter_reading(View v) {
+
+        if (Integer.parseInt(role) == 7){
+            Intent changer = new Intent(this, GridMeterReading.class);
             startActivity(changer);
         }
 

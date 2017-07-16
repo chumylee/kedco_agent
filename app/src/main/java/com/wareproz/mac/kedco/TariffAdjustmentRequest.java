@@ -7,23 +7,29 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 
-public class TariffAdjustmentRequest extends BaseActivity {
+public class TariffAdjustmentRequest extends BaseActivity implements AdapterView.OnItemSelectedListener {
 
     AutoCompleteTextView accountno;
-    TextView custName,inputtext,inputtext2;
+    TextView custName;
+    Spinner inputtext;
+    Spinner inputtext2;
     Button submitButton,getDetails;
     ConnectionDetector connectionDetector;
     String[] accountnos;
@@ -45,8 +51,8 @@ public class TariffAdjustmentRequest extends BaseActivity {
         getDetails = (Button) findViewById(R.id.getdetails);
         submitButton = (Button) findViewById(R.id.submit);
         custName = (TextView) findViewById(R.id.custname);
-        inputtext = (TextView) findViewById(R.id.inputtext);
-        inputtext2 = (TextView) findViewById(R.id.bypass);
+        inputtext = (Spinner) findViewById(R.id.inputtext);
+        inputtext2 = (Spinner) findViewById(R.id.bypass);
 
         customerId="";
 
@@ -96,9 +102,6 @@ public class TariffAdjustmentRequest extends BaseActivity {
 
                 if(customerId.length() > 0 ){
 
-                    billDate = inputtext.getText().toString();
-                    billDate2 = inputtext2.getText().toString();
-
                     Intent changer = new Intent(TariffAdjustmentRequest.this, TariffAdjustmentConfirmation.class);
                     changer.putExtra("customerId", customerId);
                     changer.putExtra("customerName", customerName);
@@ -114,6 +117,59 @@ public class TariffAdjustmentRequest extends BaseActivity {
 
             }
         });
+
+
+        // Spinner click listener
+        inputtext.setOnItemSelectedListener(this);
+        inputtext2.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("R2A");
+        categories.add("R1");
+        categories.add("R4");
+        categories.add("C1A");
+        categories.add("C3");
+        categories.add("R3");
+        categories.add("A1");
+        categories.add("R2B");
+        categories.add("C1B");
+        categories.add("C2");
+        categories.add("D1");
+        categories.add("D2");
+        categories.add("D3");
+        categories.add("A2");
+        categories.add("R2");
+        categories.add("C1");
+        categories.add("S1");
+        categories.add("A3");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        // attaching data adapter to spinner
+        inputtext.setAdapter(dataAdapter);
+        inputtext2.setAdapter(dataAdapter);
+
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        switch(parent.getId()) {
+            case R.id.inputtext:
+                // Do stuff for spinner1
+                billDate = parent.getItemAtPosition(position).toString();
+                break;
+            case R.id.bypass:
+                //Do stuff for spinner2
+                billDate2 = parent.getItemAtPosition(position).toString();
+                break;
+        }
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 
 

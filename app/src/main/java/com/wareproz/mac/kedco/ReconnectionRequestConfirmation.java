@@ -66,7 +66,7 @@ public class ReconnectionRequestConfirmation extends BaseActivity implements See
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if(i > 98)
+        if(i == 100)
         {
             new ReconnectionRequestConfirmation.confirmer().execute();
         }

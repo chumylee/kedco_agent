@@ -65,7 +65,7 @@ public class MeterInstallationConfirmation extends BaseActivity implements SeekB
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
-        if(i > 98)
+        if(i == 100)
         {
             new MeterInstallationConfirmation.confirmer().execute();
         }

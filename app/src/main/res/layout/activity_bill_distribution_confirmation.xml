@@ -4,7 +4,7 @@
     android:id="@+id/activity_bill_distribution_confirmation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/bg"
     tools:context="com.wareproz.mac.kedco.BillDistributionConfirmation">
 
     <ImageView

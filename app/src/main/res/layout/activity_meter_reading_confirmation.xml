@@ -4,7 +4,7 @@
     android:id="@+id/activity_meter_reading_confirmation"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#fff"
+    android:background="@drawable/bg"
     tools:context="com.wareproz.mac.kedco.MeterReadingConfirmation">
 
     <ImageView
@@ -93,7 +93,7 @@
         android:layout_centerHorizontal="true">
 
         <TextView
-            android:text="Meter Reading"
+            android:text="MD Meter Reading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"

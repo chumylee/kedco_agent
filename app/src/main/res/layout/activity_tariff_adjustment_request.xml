@@ -8,22 +8,18 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="#fff"
+    android:background="@drawable/bg"
     tools:context="com.wareproz.mac.kedco.TariffAdjustmentRequest">
 
 
-    <EditText
-        android:layout_height="45dp"
-        android:inputType="textEmailAddress"
-        android:ems="10"
-        android:id="@+id/inputtext"
-        android:background="@drawable/rounded_edittext"
-        android:layout_width="300dp"
-        android:hint="Wrong Tariff"
-        android:gravity="center_vertical|center_horizontal|center"
-        android:layout_marginTop="31dp"
+    <TextView
+        android:text="Select Wrong Tariff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView15"
+        android:layout_marginTop="35dp"
         android:layout_below="@+id/custname"
-        android:layout_alignStart="@+id/submit" />
+        android:layout_alignStart="@+id/inputtext" />
 
     <AutoCompleteTextView
         android:layout_height="45dp"
@@ -31,7 +27,7 @@
         android:ems="10"
         android:id="@+id/accountno"
         android:background="@drawable/rounded_edittext"
-        android:hint="Customen Acc No"
+        android:hint="Customer Acc No"
         android:gravity="center_vertical|center_horizontal|center"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"
@@ -46,7 +42,7 @@
         android:textStyle="bold"
         android:textColor="#FFF"
         android:textSize="18dp"
-        android:background="@drawable/button_bckgrnd"
+        android:background="@drawable/button_bckgrnd2"
         android:layout_alignParentTop="true"
         android:layout_alignParentEnd="true"
         android:layout_width="130dp" />
@@ -62,6 +58,18 @@
         android:layout_below="@+id/accountno"
         android:layout_centerHorizontal="true" />
 
+
+    <Spinner
+        android:layout_height="45dp"
+        android:id="@+id/inputtext"
+        android:background="@drawable/rounded_edittext"
+        android:layout_width="300dp"
+        android:hint="Wrong Tariff"
+        android:gravity="center_vertical|center_horizontal|center"
+        android:layout_marginTop="52dp"
+        android:layout_below="@+id/custname"
+        android:layout_alignStart="@+id/bypass" />
+
     <Button
         android:id="@+id/submit"
         style="?android:textAppearanceSmall"
@@ -72,22 +80,28 @@
         android:textColor="#FFF"
         android:textSize="20dp"
         android:background="@drawable/button_bckgrnd"
-        android:layout_marginTop="71dp"
+        android:layout_marginTop="47dp"
         android:layout_below="@+id/bypass"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <TextView
+        android:text="Select Correct Tariff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView14"
+        android:layout_marginTop="14dp"
+        android:layout_below="@+id/inputtext"
+        android:layout_alignStart="@+id/bypass" />
+
+    <Spinner
         android:layout_height="45dp"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/bypass"
         android:background="@drawable/rounded_edittext"
         android:layout_width="300dp"
         android:hint="Correct Tariff"
         android:gravity="center_vertical|center_horizontal|center"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/inputtext"
-        android:layout_alignStart="@+id/inputtext" />
+        android:layout_below="@+id/textView14"
+        android:layout_alignStart="@+id/submit" />
 
 
 </RelativeLayout>
