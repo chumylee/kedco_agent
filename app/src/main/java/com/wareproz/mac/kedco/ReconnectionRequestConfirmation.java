@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
@@ -105,7 +107,12 @@ public class ReconnectionRequestConfirmation extends BaseActivity implements See
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "reconnectionRequestSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate;
+            try {
+                billDate = URLEncoder.encode(billDate, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            String url = "reconnectionRequestSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&salesrep="+ cid;
             String jsonStr = sh.makeServiceCall(url);
 
 
@@ -163,7 +170,7 @@ public class ReconnectionRequestConfirmation extends BaseActivity implements See
 
             }else{
                 //
-                Toast.makeText(ReconnectionRequestConfirmation.this,"Unable to Submit",Toast.LENGTH_LONG).show();
+                Toast.makeText(ReconnectionRequestConfirmation.this,msg,Toast.LENGTH_LONG).show();
                 finish();
             }
         }
