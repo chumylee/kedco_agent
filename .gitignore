@@ -1,4 +1,4 @@
 build.gradle
-gradle/*
+gradle/wrapper/gradle-wrapper.properties
 .gradle
 .idea/*
