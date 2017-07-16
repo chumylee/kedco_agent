@@ -19,7 +19,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class Disconnection extends BaseActivity {
@@ -90,9 +94,22 @@ public class Disconnection extends BaseActivity {
                         JSONObject c = contacts.getJSONObject(i);
 
                         String id = c.getString("id");
-                        String name = c.getString("customername");
-                        String email = c.getString("accountnumber");
-                        String address = c.getString("address");
+                        String name = "Customer Name: "+ c.getString("customername");
+                        String email = "Account Number: "+  c.getString("accountnumber");
+                        String address = "Customer Address: "+ c.getString("address");
+                        String reason = "Reason for Disconnection: " + c.getString("reason");
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                        SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                        Date parsedDate = null;
+                        try {
+                            parsedDate = formatter.parse(c.getString("date"));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(parsedDate);
+
+                        String date = "Request date/time: " + formatter2.format(parsedDate);
                         //String gender = c.getString("gender");
 
                         // Phone node is JSON Object
@@ -109,6 +126,8 @@ public class Disconnection extends BaseActivity {
                         contact.put("name", name);
                         contact.put("email", email);
                         contact.put("mobile", address);
+                        contact.put("reason", reason);
+                        contact.put("date", date);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -155,8 +174,8 @@ public class Disconnection extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     Disconnection.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.id});
+                    "mobile", "reason", "date", "id"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.date, R.id.id});
 
             lv.setAdapter(adapter);
 
