@@ -18,7 +18,7 @@
         android:ems="10"
         android:id="@+id/accountno"
         android:background="@drawable/rounded_edittext"
-        android:hint="Feeder Namer"
+        android:hint="Feeder Name"
         android:gravity="center_vertical|center_horizontal|center"
         android:layout_width="match_parent"
         android:layout_alignParentTop="true"

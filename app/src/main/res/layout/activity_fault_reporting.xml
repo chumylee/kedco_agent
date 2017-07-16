@@ -49,18 +49,24 @@
         android:layout_below="@+id/accountno"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <Spinner
         android:layout_height="45dp"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/bypass"
         android:background="@drawable/rounded_edittext"
         android:layout_width="300dp"
-        android:hint="Nature of Fault"
+        android:hint="Reason"
         android:gravity="center_vertical|center_horizontal|center"
-        android:layout_marginTop="35dp"
+        android:layout_below="@+id/textView4"
+        android:layout_alignEnd="@+id/submit" />
+
+    <TextView
+        android:text="Select Disconnection Reason"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView4"
+        android:layout_marginTop="44dp"
         android:layout_below="@+id/custname"
-        android:layout_alignStart="@+id/submit" />
+        android:layout_alignStart="@+id/bypass" />
 
     <Button
         android:id="@+id/submit"
