@@ -18,7 +18,11 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.HashMap;
 
 public class TariffAdjustment extends BaseActivity {
@@ -90,9 +94,24 @@ public class TariffAdjustment extends BaseActivity {
                         JSONObject c = contacts.getJSONObject(i);
 
                         String id = c.getString("id");
-                        String name = c.getString("customername");
-                        String email = c.getString("accountnumber");
-                        String address = c.getString("address");
+                        String name = "Customer Name: "+ c.getString("customername");
+                        String email = "Account Number: "+c.getString("accountnumber");
+                        String address = "Customer Address: "+ c.getString("address");
+                        String oldTariff = "Current Tariff: "+c.getString("wrong_tariff");
+                        String newTariff = "New Tariff: "+ c.getString("right_tariff");
+                        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                        SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
+                        Date parsedDate = null;
+                        try {
+                            parsedDate = formatter.parse(c.getString("date"));
+                        } catch (ParseException e) {
+                            e.printStackTrace();
+                        }
+                        Calendar calendar = Calendar.getInstance();
+                        calendar.setTime(parsedDate);
+
+                        String date = "Request date/time: " + formatter2.format(parsedDate);
+
                         //String gender = c.getString("gender");
 
                         // Phone node is JSON Object
@@ -109,6 +128,9 @@ public class TariffAdjustment extends BaseActivity {
                         contact.put("name", name);
                         contact.put("email", email);
                         contact.put("mobile", address);
+                        contact.put("old_tariff", oldTariff);
+                        contact.put("new_tariff", newTariff);
+                        contact.put("date", date);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -155,8 +177,8 @@ public class TariffAdjustment extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     TariffAdjustment.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.id});
+                    "mobile", "old_tariff", "new_tariff", "date", "id"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.date, R.id.id});
 
             lv.setAdapter(adapter);
 
