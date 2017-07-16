@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
@@ -109,7 +111,17 @@ public class MeterBypassConfirmation extends BaseActivity implements SeekBar.OnS
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "meterBypassSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&bill_period2="+ billDate2;
+            try {
+                billDate = URLEncoder.encode(billDate, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            try {
+                billDate2 = URLEncoder.encode(billDate2, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
+            String url = "meterBypassSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&bill_period2="+ billDate2 +"&salesrep="+ cid;
             String jsonStr = sh.makeServiceCall(url);
 
 
@@ -167,7 +179,7 @@ public class MeterBypassConfirmation extends BaseActivity implements SeekBar.OnS
 
             }else{
                 //
-                Toast.makeText(MeterBypassConfirmation.this,"Unable to Submit",Toast.LENGTH_LONG).show();
+                Toast.makeText(MeterBypassConfirmation.this,msg,Toast.LENGTH_LONG).show();
                 finish();
             }
         }

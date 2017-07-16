@@ -7,23 +7,28 @@ import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
+import android.widget.Spinner;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 
-public class MeterBypassCheck extends BaseActivity {
+public class MeterBypassCheck extends BaseActivity implements AdapterView.OnItemSelectedListener{
 
     AutoCompleteTextView accountno;
-    TextView custName,inputtext,inputtext2;
+    TextView custName,inputtext;
+    Spinner inputtext2;
     Button submitButton,getDetails;
     ConnectionDetector connectionDetector;
     String[] accountnos;
@@ -46,7 +51,7 @@ public class MeterBypassCheck extends BaseActivity {
         submitButton = (Button) findViewById(R.id.submit);
         custName = (TextView) findViewById(R.id.custname);
         inputtext = (TextView) findViewById(R.id.inputtext);
-        inputtext2 = (TextView) findViewById(R.id.bypass);
+        inputtext2 = (Spinner) findViewById(R.id.bypass);
 
         customerId="";
 
@@ -97,7 +102,6 @@ public class MeterBypassCheck extends BaseActivity {
                 if(customerId.length() > 0 ){
 
                     billDate = inputtext.getText().toString();
-                    billDate2 = inputtext2.getText().toString();
 
                     Intent changer = new Intent(MeterBypassCheck.this, MeterBypassConfirmation.class);
                     changer.putExtra("customerId", customerId);
@@ -114,6 +118,35 @@ public class MeterBypassCheck extends BaseActivity {
 
             }
         });
+
+        // Spinner element
+        Spinner spinner = (Spinner) findViewById(R.id.bypass);
+
+        // Spinner click listener
+        spinner.setOnItemSelectedListener(this);
+
+        // Spinner Drop down elements
+        List<String> categories = new ArrayList<String>();
+        categories.add("Noticed");
+        categories.add("Suspected");
+
+        // Creating adapter for spinner
+        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+
+        // Drop down layout style - list view with radio button
+        dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        // attaching data adapter to spinner
+        spinner.setAdapter(dataAdapter);
+    }
+
+    @Override
+    public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+        // On selecting a spinner item
+        billDate2 = parent.getItemAtPosition(position).toString();
+    }
+    public void onNothingSelected(AdapterView<?> arg0) {
+        // TODO Auto-generated method stub
     }
 
 
