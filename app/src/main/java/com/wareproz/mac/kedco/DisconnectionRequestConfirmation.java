@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
@@ -25,43 +27,43 @@ public class DisconnectionRequestConfirmation extends BaseActivity implements Se
     SessionManagement session;
     String cid, fullname, role, staff_id, email, phone, customers;
 
-@Override
-protected void onCreate(Bundle savedInstanceState) {
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_disconnection_request_confirmation);
 
-    Bundle bundle = getIntent().getExtras();
-    customerId = bundle.getString("customerId");
-    customerName = bundle.getString("customerName");
-    customerAccNo = bundle.getString("customerAccNo");
-    billDate = bundle.getString("billDate");
+        Bundle bundle = getIntent().getExtras();
+        customerId = bundle.getString("customerId");
+        customerName = bundle.getString("customerName");
+        customerAccNo = bundle.getString("customerAccNo");
+        billDate = bundle.getString("billDate");
 
-    custName = (TextView) findViewById(R.id.custName);
-    custAccNo = (TextView) findViewById(R.id.custAccNo);
-    billPeriod = (TextView) findViewById(R.id.billPeriod);
+        custName = (TextView) findViewById(R.id.custName);
+        custAccNo = (TextView) findViewById(R.id.custAccNo);
+        billPeriod = (TextView) findViewById(R.id.billPeriod);
 
-    custName.setText(customerName);
-    custAccNo.setText(customerAccNo);
-    billPeriod.setText(billDate);
+        custName.setText(customerName);
+        custAccNo.setText(customerAccNo);
+        billPeriod.setText(billDate);
 
-    // Session Manager
-    session = new SessionManagement(getApplicationContext());
+        // Session Manager
+        session = new SessionManagement(getApplicationContext());
 
-    // get user data from session
-    HashMap<String, String> user = session.getUserDetails();
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
 
-    cid = user.get(KEY_ID);
-    fullname = user.get(SessionManagement.FULLNAME);
-    role = user.get(SessionManagement.ROLE);
-    staff_id = user.get(SessionManagement.KEY_STAFFID);
-    email = user.get(SessionManagement.EMAIL);
-    phone = user.get(SessionManagement.PHONE);
-    customers = user.get(SessionManagement.CUSTOMERS);
+        cid = user.get(KEY_ID);
+        fullname = user.get(SessionManagement.FULLNAME);
+        role = user.get(SessionManagement.ROLE);
+        staff_id = user.get(SessionManagement.KEY_STAFFID);
+        email = user.get(SessionManagement.EMAIL);
+        phone = user.get(SessionManagement.PHONE);
+        customers = user.get(SessionManagement.CUSTOMERS);
 
 
-    SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar1);
-    seekbar.setOnSeekBarChangeListener(this);
-}
+        SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar1);
+        seekbar.setOnSeekBarChangeListener(this);
+    }
 
     @Override
     public void onProgressChanged(SeekBar seekBar, int i, boolean b) {
@@ -104,6 +106,11 @@ protected void onCreate(Bundle savedInstanceState) {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
+            try {
+                billDate = URLEncoder.encode(billDate, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
             String url = "disconnectionRequestSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&salesrep="+ cid;
             String jsonStr = sh.makeServiceCall(url);
 
@@ -162,7 +169,7 @@ protected void onCreate(Bundle savedInstanceState) {
 
             }else{
                 //
-                Toast.makeText(DisconnectionRequestConfirmation.this,"Unable to Submit",Toast.LENGTH_LONG).show();
+                Toast.makeText(DisconnectionRequestConfirmation.this,msg,Toast.LENGTH_LONG).show();
                 finish();
             }
         }
