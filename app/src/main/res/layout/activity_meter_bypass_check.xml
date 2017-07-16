@@ -76,18 +76,15 @@
         android:layout_below="@+id/bypass"
         android:layout_centerHorizontal="true" />
 
-    <EditText
+    <Spinner
         android:layout_height="45dp"
-        android:inputType="textEmailAddress"
-        android:ems="10"
         android:id="@+id/bypass"
         android:background="@drawable/rounded_edittext"
         android:layout_width="300dp"
-        android:hint="Noticed/Suspected  Bypass"
+        android:hint="Reason"
         android:gravity="center_vertical|center_horizontal|center"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/inputtext"
-        android:layout_alignStart="@+id/inputtext" />
+        android:layout_centerVertical="true"
+        android:layout_alignStart="@+id/submit" />
 
 
 </RelativeLayout>
