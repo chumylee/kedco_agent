@@ -1,5 +1,4 @@
 local.properties
 build.gradle
 gradle/
-app/.gitignore
 .gradle
