@@ -186,7 +186,7 @@ public class FaultHandling extends BaseActivity {
                     selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(FaultHandling.this);
-                    alertDialogBuilder.setMessage("Are you sure, You have performed the required action for the customer");
+                    alertDialogBuilder.setMessage("Are you sure you have handled this fault?");
                     alertDialogBuilder.setPositiveButton("yes",
                             new DialogInterface.OnClickListener() {
                                 @Override

@@ -175,7 +175,7 @@ public class Disconnection extends BaseActivity {
                     Disconnection.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
                     "mobile", "reason", "date", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.date, R.id.id});
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id});
 
             lv.setAdapter(adapter);
 
@@ -187,7 +187,7 @@ public class Disconnection extends BaseActivity {
                     selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Disconnection.this);
-                    alertDialogBuilder.setMessage("Are you sure, You have performed the required action for the customer");
+                    alertDialogBuilder.setMessage("Are you sure you have disconnected this customer?");
                             alertDialogBuilder.setPositiveButton("yes",
                                     new DialogInterface.OnClickListener() {
                                         @Override
