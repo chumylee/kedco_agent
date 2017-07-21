@@ -6,6 +6,7 @@ import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.os.Handler;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -124,7 +125,7 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
         inputtext2.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
-        List<String> categories = new ArrayList<String>();
+        final List<String> categories = new ArrayList<String>();
         categories.add("R2A");
         categories.add("R1");
         categories.add("R4");
@@ -145,12 +146,40 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
         categories.add("A3");
 
         // Creating adapter for spinner
-        ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
+        final ArrayAdapter<String> dataAdapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categories);
         // Drop down layout style - list view with radio button
         dataAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         // attaching data adapter to spinner
         inputtext.setAdapter(dataAdapter);
         inputtext2.setAdapter(dataAdapter);
+
+        inputtext.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
+                if(inputtext.getSelectedItem().toString().equals(inputtext2.getSelectedItem().toString())){
+                    Handler handler = new Handler();
+                    handler.post(new Runnable() {
+                        @Override
+                        public void run() {
+                            ArrayList<String> dupl = new ArrayList<String>();
+                            for(String s: categories){
+                                if(!s.equals(categories.get(i))){
+                                    dupl.add(s);
+                                }
+                            }
+                            ArrayAdapter newAdapter = new ArrayAdapter(TariffAdjustmentRequest.this,android.R.layout.simple_list_item_1,
+                                    dupl);
+                            inputtext2.setAdapter(newAdapter);
+                        }
+                    });
+                }
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+
+            }
+        });
 
     }
 
