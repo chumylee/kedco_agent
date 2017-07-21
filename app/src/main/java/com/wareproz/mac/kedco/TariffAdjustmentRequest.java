@@ -173,6 +173,7 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
                         }
                     });
                 }
+                billDate = inputtext.getSelectedItem().toString();
             }
 
             @Override
