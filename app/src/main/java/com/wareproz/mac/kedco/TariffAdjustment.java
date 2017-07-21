@@ -190,7 +190,7 @@ public class TariffAdjustment extends BaseActivity {
                     selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
                     AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TariffAdjustment.this);
-                    alertDialogBuilder.setMessage("Are you sure, You have performed the required action for the customer");
+                    alertDialogBuilder.setMessage("Are you sure you have performed the proper tariff adjustment for this customer?");
                     alertDialogBuilder.setPositiveButton("yes",
                             new DialogInterface.OnClickListener() {
                                 @Override
