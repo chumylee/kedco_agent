@@ -35,6 +35,7 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
     ConnectionDetector connectionDetector;
     String[] accountnos;
     String customerAccNo,customerName,customerId,json_status,billDate,billDate2;
+    List<String> categories;
 
     private ProgressDialog pDialog;
 
@@ -125,7 +126,7 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
         inputtext2.setOnItemSelectedListener(this);
 
         // Spinner Drop down elements
-        final List<String> categories = new ArrayList<String>();
+        categories = new ArrayList<String>();
         categories.add("R2A");
         categories.add("R1");
         categories.add("R4");
@@ -153,35 +154,6 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
         inputtext.setAdapter(dataAdapter);
         inputtext2.setAdapter(dataAdapter);
 
-        inputtext.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, final int i, long l) {
-                if(inputtext.getSelectedItem().toString().equals(inputtext2.getSelectedItem().toString())){
-                    Handler handler = new Handler();
-                    handler.post(new Runnable() {
-                        @Override
-                        public void run() {
-                            ArrayList<String> dupl = new ArrayList<String>();
-                            for(String s: categories){
-                                if(!s.equals(categories.get(i))){
-                                    dupl.add(s);
-                                }
-                            }
-                            ArrayAdapter newAdapter = new ArrayAdapter(TariffAdjustmentRequest.this,android.R.layout.simple_list_item_1,
-                                    dupl);
-                            inputtext2.setAdapter(newAdapter);
-                        }
-                    });
-                }
-                billDate = inputtext.getSelectedItem().toString();
-            }
-
-            @Override
-            public void onNothingSelected(AdapterView<?> adapterView) {
-
-            }
-        });
-
     }
 
     @Override
@@ -190,6 +162,21 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
         switch(parent.getId()) {
             case R.id.inputtext:
                 // Do stuff for spinner1
+                Handler handler = new Handler();
+                handler.post(new Runnable() {
+                    @Override
+                    public void run() {
+                        ArrayList<String> dupl = new ArrayList<String>();
+                        for(String s: categories){
+                            if(!s.equals(inputtext.getSelectedItem().toString())){
+                                dupl.add(s);
+                            }
+                        }
+                        ArrayAdapter newAdapter = new ArrayAdapter(TariffAdjustmentRequest.this,android.R.layout.simple_list_item_1,
+                                dupl);
+                        inputtext2.setAdapter(newAdapter);
+                    }
+                });
                 billDate = parent.getItemAtPosition(position).toString();
                 break;
             case R.id.bypass:
