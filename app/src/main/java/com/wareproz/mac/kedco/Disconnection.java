@@ -26,6 +26,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
+
 public class Disconnection extends BaseActivity {
 
     private String TAG = Disconnection.class.getSimpleName();
@@ -33,6 +35,7 @@ public class Disconnection extends BaseActivity {
 
     // Session Manager Class
     SessionManagement session;
+    String cid, fullname, role, staff_id, email, phone, customers;
     private ProgressDialog pDialog;
     private ListView lv;
 
@@ -48,6 +51,16 @@ public class Disconnection extends BaseActivity {
 
         // Session Manager
         session = new SessionManagement(getApplicationContext());
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        cid = user.get(KEY_ID);
+        fullname = user.get(SessionManagement.FULLNAME);
+        role = user.get(SessionManagement.ROLE);
+        staff_id = user.get(SessionManagement.KEY_STAFFID);
+        email = user.get(SessionManagement.EMAIL);
+        phone = user.get(SessionManagement.PHONE);
+        customers = user.get(SessionManagement.CUSTOMERS);
 
         contactList = new ArrayList<>();
 
@@ -184,27 +197,32 @@ public class Disconnection extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position,
                                         long id) {
 
-                    selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
+                    if (Integer.parseInt(role) != 3){
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Disconnection.this);
-                    alertDialogBuilder.setMessage("Are you sure you have disconnected this customer?");
-                            alertDialogBuilder.setPositiveButton("yes",
-                                    new DialogInterface.OnClickListener() {
-                                        @Override
-                                        public void onClick(DialogInterface arg0, int arg1) {
-                                            new Disconnection.confirmer().execute();
-                                        }
-                                    });
+                        Toast.makeText(Disconnection.this,"You dont have permission to perform this action",Toast.LENGTH_LONG).show();
 
-                    alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //finish();
-                        }
-                    });
+                    }else{
+                        selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Disconnection.this);
+                        alertDialogBuilder.setMessage("Are you sure you have disconnected this customer?");
+                        alertDialogBuilder.setPositiveButton("yes",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        new Disconnection.confirmer().execute();
+                                    }
+                                });
 
+                        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //finish();
+                            }
+                        });
+
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+                    }
 
                 }
             });

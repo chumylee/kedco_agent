@@ -90,6 +90,9 @@ public class HomeActivity extends BaseActivity  {
             disconnection_request.setAlpha(1);
             reconnection_request.setAlpha(1);
             tarriff_adjustment_request.setAlpha(1);
+
+            disconnection.setAlpha(1);
+            reconnection.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 3){
