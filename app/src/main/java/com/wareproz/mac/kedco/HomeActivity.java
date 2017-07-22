@@ -154,7 +154,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void disconnection(View v) {
 
-        if (Integer.parseInt(role) == 3){
+        if (Integer.parseInt(role) == 3 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, Disconnection.class);
             startActivity(changer);
         }
@@ -170,7 +170,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void reconnection(View v) {
 
-        if (Integer.parseInt(role) == 3){
+        if (Integer.parseInt(role) == 3 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, Reconnection.class);
             startActivity(changer);
         }
