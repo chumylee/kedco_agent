@@ -242,7 +242,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void logoutx(View v) {
         //new LogoutUser().execute();
-        session.logoutUser();
+        new LogoutUser().execute();
     }
 
     public void sdmenu(View v) {
@@ -259,14 +259,14 @@ public class HomeActivity extends BaseActivity  {
 
     private class LogoutUser extends AsyncTask<Void, Void, Void> {
 
-        String json_result;
+        String json_status, json_message;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
             pDialog = new ProgressDialog(HomeActivity.this);
-            pDialog.setMessage("Loging Out...");
+            pDialog.setMessage("Logging Out...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -277,14 +277,15 @@ public class HomeActivity extends BaseActivity  {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "driver_logout.php?id="+ id;
+            String url = "logout.php?username="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             if (jsonStr != null) {
                 try {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
-                    json_result = jsonObj.getString("json_result");
+                    json_status = jsonObj.getString("status");
+                    json_message = jsonObj.getString("msg");
 
                     //JSONArray contacts = jsonObj.getJSONArray("contacts");
 
@@ -319,10 +320,13 @@ public class HomeActivity extends BaseActivity  {
         @Override
         protected void onPostExecute(Void result) {
             super.onPostExecute(result);
+            if(json_status.equals("1")){
+                session.logoutUser();
+            }
             // Dismiss the progress dialog
             if (pDialog.isShowing())
                 pDialog.dismiss();
-            Log.d("TAG", json_result);
+            Log.d("TAG", json_message);
         }
 
     }
