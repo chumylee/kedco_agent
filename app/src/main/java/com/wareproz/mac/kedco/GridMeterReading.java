@@ -140,7 +140,7 @@ public class GridMeterReading extends BaseActivity {
             // Making a request to url and getting response
             String url = null;
             try {
-                url = "getFeederDetails.php?accountno="+ URLEncoder.encode(customerAccNo, "utf-8") +"&id="+ cid;
+                url = "getFeederDetails.php?accountno="+ URLEncoder.encode(customerAccNo, "utf-8") +"&id="+ staff_id;
             } catch (UnsupportedEncodingException e) {
                 e.printStackTrace();
             }

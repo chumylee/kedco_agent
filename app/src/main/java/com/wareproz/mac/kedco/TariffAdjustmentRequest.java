@@ -210,7 +210,7 @@ public class TariffAdjustmentRequest extends BaseActivity implements AdapterView
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "getCustomerDetails.php?accountno="+ customerAccNo +"&id="+ cid;
+            String url = "getCustomerDetails.php?accountno="+ customerAccNo +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             if (jsonStr != null) {

@@ -135,7 +135,7 @@ public class MeterInstallation extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
-            String url = "getCustomerDetails.php?accountno="+ customerAccNo +"&id="+ cid;
+            String url = "getCustomerDetails.php?accountno="+ customerAccNo +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             if (jsonStr != null) {
