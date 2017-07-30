@@ -143,6 +143,9 @@ public class SessionManagement {
         editor.clear();
         editor.commit();
 
+        editor2.clear();
+        editor2.commit();
+
         //clear user data too ... to clear push note token
         clearApplicationData();
 
