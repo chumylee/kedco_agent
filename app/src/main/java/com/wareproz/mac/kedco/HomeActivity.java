@@ -93,6 +93,7 @@ public class HomeActivity extends BaseActivity  {
 
             disconnection.setAlpha(1);
             reconnection.setAlpha(1);
+            tarriff_adjustment.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 3){
@@ -188,7 +189,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void tarriff_adjustment(View v) {
 
-        if (Integer.parseInt(role) == 4){
+        if (Integer.parseInt(role) == 4 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, TariffAdjustment.class);
             startActivity(changer);
         }
