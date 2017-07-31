@@ -138,6 +138,7 @@
             android:name=".Unlocker"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".BaseActivity" />
+        <activity android:name=".ChangePassword"></activity>
     </application>
 
 </manifest>

@@ -75,25 +75,29 @@ public class HomeActivity extends BaseActivity  {
         RelativeLayout fault_handling = (RelativeLayout) findViewById(R.id.fault_handling);
         RelativeLayout grid_meter_reading = (RelativeLayout) findViewById(R.id.grid_meter_reading);
 
-        fault_reporting.setAlpha(1);
-
 
         if (Integer.parseInt(role) == 1){
             bill_distribution.setAlpha(1);
             meter_bypass_check.setAlpha(1);
+            fault_reporting.setAlpha(1);
+
+            fault_handling.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 2){
             bill_distribution.setAlpha(1);
             meter_bypass_check.setAlpha(1);
+            fault_reporting.setAlpha(1);
 
             disconnection_request.setAlpha(1);
             reconnection_request.setAlpha(1);
             tarriff_adjustment_request.setAlpha(1);
+            meter_bypass_confirmation.setAlpha(1);
 
             disconnection.setAlpha(1);
             reconnection.setAlpha(1);
             tarriff_adjustment.setAlpha(1);
+            fault_handling.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 3){
@@ -207,7 +211,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void meter_bypass_confirmation(View v) {
 
-        if (Integer.parseInt(role) == 3){
+        if (Integer.parseInt(role) == 3 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, MeterBypassConf.class);
             startActivity(changer);
         }
@@ -216,10 +220,10 @@ public class HomeActivity extends BaseActivity  {
 
     public void fault_reporting(View v) {
 
-        //if (Integer.parseInt(role) == 1  || Integer.parseInt(role) == 2){
+        if (Integer.parseInt(role) == 1  || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, FaultReporting.class);
             startActivity(changer);
-        //}
+        }
 
     }
 
@@ -244,6 +248,11 @@ public class HomeActivity extends BaseActivity  {
     public void logoutx(View v) {
         //new LogoutUser().execute();
         new LogoutUser().execute();
+    }
+
+    public void changepass(View v) {
+        //new LogoutUser().execute();
+        //new LogoutUser().execute();
     }
 
     public void sdmenu(View v) {
