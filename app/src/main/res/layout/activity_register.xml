@@ -27,15 +27,15 @@
                     android:layout_centerHorizontal="true" />
 
                 <TextView
-                    android:text="Register as a staff"
+                    android:id="@+id/textView9"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_below="@+id/imageView2"
                     android:layout_centerHorizontal="true"
                     android:layout_marginTop="33dp"
-                    android:id="@+id/textView9"
-                    android:textStyle="bold"
-                    android:textSize="18sp" />
+                    android:text="Staff Registration"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
 
                 <EditText
                     android:layout_height="45dp"
