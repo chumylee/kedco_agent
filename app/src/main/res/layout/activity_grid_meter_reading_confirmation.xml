@@ -17,7 +17,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Confirm that your input is correct "
+        android:text="Review DATA before submission"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/imageView3"

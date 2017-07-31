@@ -13,7 +13,7 @@
 
 
     <TextView
-        android:text="Select Wrong Tariff"
+        android:text="Wrong Tariff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView15"
@@ -23,7 +23,7 @@
 
     <AutoCompleteTextView
         android:layout_height="45dp"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         android:ems="10"
         android:id="@+id/accountno"
         android:background="@drawable/rounded_edittext"
@@ -85,7 +85,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Select Correct Tariff"
+        android:text="Correct Tariff"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView14"

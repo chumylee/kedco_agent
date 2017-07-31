@@ -51,7 +51,7 @@
 
     <EditText
         android:layout_height="45dp"
-        android:inputType="textEmailAddress"
+        android:inputType="number"
         android:ems="10"
         android:id="@+id/bypass"
         android:background="@drawable/rounded_edittext"

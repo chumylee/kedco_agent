@@ -91,6 +91,7 @@ public class Disconnection extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
+            String url = "disconnection.php?role="+ role +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
@@ -205,7 +206,7 @@ public class Disconnection extends BaseActivity {
                         selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
                         AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(Disconnection.this);
-                        alertDialogBuilder.setMessage("Are you sure you have disconnected this customer?");
+                        alertDialogBuilder.setMessage("Please CONFIRM that you have DISCONNECTED this customer");
                         alertDialogBuilder.setPositiveButton("yes",
                                 new DialogInterface.OnClickListener() {
                                     @Override

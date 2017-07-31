@@ -91,6 +91,7 @@ public class Reconnection extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
+            String url = "reconnection.php?role="+ role +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
