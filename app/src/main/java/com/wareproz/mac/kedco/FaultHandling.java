@@ -112,6 +112,7 @@ public class FaultHandling extends BaseActivity {
                         String email = "Account Number: "+ c.getString("accountnumber");
                         String address = "Customer Address: "+c.getString("address");
                         String nature = "Nature of Fault: "+c.getString("nature");
+                        String reqby = "Requested By: " + c.getString("reqby");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -142,6 +143,7 @@ public class FaultHandling extends BaseActivity {
                         contact.put("mobile", address);
                         contact.put("date", date);
                         contact.put("nature", nature);
+                        contact.put("reqby", reqby);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -188,8 +190,8 @@ public class FaultHandling extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     FaultHandling.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "nature", "date", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.date, R.id.id});
+                    "mobile", "nature", "date", "id", "reqby"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.date, R.id.id, R.id.reqby});
 
             lv.setAdapter(adapter);
 

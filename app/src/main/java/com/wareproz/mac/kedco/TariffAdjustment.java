@@ -114,6 +114,7 @@ public class TariffAdjustment extends BaseActivity {
                         String address = "Customer Address: "+ c.getString("address");
                         String oldTariff = "Current Tariff: "+c.getString("wrong_tariff");
                         String newTariff = "New Tariff: "+ c.getString("right_tariff");
+                        String reqby = "Requested By: " + c.getString("reqby");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -146,6 +147,7 @@ public class TariffAdjustment extends BaseActivity {
                         contact.put("old_tariff", oldTariff);
                         contact.put("new_tariff", newTariff);
                         contact.put("date", date);
+                        contact.put("reqby", reqby);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -192,8 +194,8 @@ public class TariffAdjustment extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     TariffAdjustment.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "old_tariff", "new_tariff", "date", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.date, R.id.id});
+                    "mobile", "old_tariff", "new_tariff", "date", "id", "reqby"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.date, R.id.id, R.id.reqby});
 
             lv.setAdapter(adapter);
 
