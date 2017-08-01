@@ -119,6 +119,11 @@ public class Login extends AppCompatActivity {
             Token="";
             if(!session.hasToken()) {
                 Token = g.getToken();
+                if(Token == null){
+                    Token = FirebaseInstanceId.getInstance().getToken();
+                    g.setToken(Token);
+                    session.storeToken(Token);
+                }
             }else{
                 Token = session.getTokenDetails();
             }
