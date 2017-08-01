@@ -18,8 +18,8 @@ import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 public class BillDistributionConfirmation extends BaseActivity implements SeekBar.OnSeekBarChangeListener {
 
     private ProgressDialog pDialog;
-    String customerAccNo,customerName,customerId,billDate;
-    TextView custName,custAccNo,billPeriod;
+    String customerAccNo, customerName, customerId, billDate;
+    TextView custName, custAccNo, billPeriod;
 
     // Session Manager Class
     SessionManagement session;
@@ -60,6 +60,7 @@ public class BillDistributionConfirmation extends BaseActivity implements SeekBa
 
         SeekBar seekbar = (SeekBar) findViewById(R.id.seekBar1);
         seekbar.setOnSeekBarChangeListener(this);
+
     }
 
 
