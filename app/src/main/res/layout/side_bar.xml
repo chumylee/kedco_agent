@@ -31,27 +31,28 @@
                 android:layout_height="40dp" />
 
             <TextView
-                android:text="Iweama Chukwuma Patrick"
+                android:text="Iweama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
-                android:id="@+id/usersname"
+                android:id="@+id/role"
                 android:layout_alignBottom="@+id/imageView7"
                 android:layout_alignParentStart="true"
-                android:textColor="#fff"
-                android:textSize="16sp"
+                android:textColor="#F8DC09"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:text="Welcome,"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/usersname"
-                android:layout_alignStart="@+id/usersname"
+                android:layout_above="@+id/role"
+                android:layout_alignStart="@+id/role"
                 android:layout_marginBottom="2dp"
-                android:id="@+id/textView11"
-                android:textColor="#F8DC09"
-                android:textSize="14sp" />
+                android:text="Iweama Chukwuma Patrick"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
