@@ -33,9 +33,9 @@ public class Register extends AppCompatActivity {
 
         connectionDetector = new ConnectionDetector(this);
         txtlogin = (TextView) findViewById(R.id.tologin);
-        register_button = (Button) findViewById(R.id.login);
+        register_button = (Button) findViewById(R.id.changepass);
         txtstaffid = (EditText) findViewById(R.id.staffid);
-        txtpassword = (EditText) findViewById(R.id.password);
+        txtpassword = (EditText) findViewById(R.id.new_pin);
         txtpassword2 = (EditText) findViewById(R.id.password2);
         txtemail = (EditText) findViewById(R.id.email);
         txtphonenumber = (EditText) findViewById(R.id.phone);

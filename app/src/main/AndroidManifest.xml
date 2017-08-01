@@ -122,6 +122,10 @@
             android:name=".FaultHandling"
             android:label="Fault Handling"
             android:parentActivityName=".HomeActivity" />
+        <activity
+            android:name=".ChangePassword"
+            android:label="Change Password"
+            android:parentActivityName=".HomeActivity"/>
 
         <service android:name=".FirebaseMessagingService">
             <intent-filter>
@@ -138,7 +142,6 @@
             android:name=".Unlocker"
             android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
         <activity android:name=".BaseActivity" />
-        <activity android:name=".ChangePassword"></activity>
     </application>
 
 </manifest>

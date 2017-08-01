@@ -33,8 +33,8 @@ public class Unlocker extends AppCompatActivity {
         setContentView(R.layout.activity_unlocker);
 
         connectionDetector = new ConnectionDetector(this);
-        login_button = (Button) findViewById(R.id.login);
-        txtpassword = (TextView) findViewById(R.id.password);
+        login_button = (Button) findViewById(R.id.changepass);
+        txtpassword = (TextView) findViewById(R.id.new_pin);
 
         // Session Manager
         session = new SessionManagement(getApplicationContext());

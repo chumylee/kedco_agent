@@ -251,8 +251,8 @@ public class HomeActivity extends BaseActivity  {
     }
 
     public void changepass(View v) {
-        //new LogoutUser().execute();
-        //new LogoutUser().execute();
+        Intent changer = new Intent(this, ChangePassword.class);
+        startActivity(changer);
     }
 
     public void sdmenu(View v) {

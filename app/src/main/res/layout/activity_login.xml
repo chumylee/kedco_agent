@@ -29,7 +29,7 @@
         android:textSize="16sp" />
 
     <Button
-        android:id="@+id/login"
+        android:id="@+id/changepass"
         style="?android:textAppearanceSmall"
         android:layout_width="300dp"
         android:layout_height="45dp"
@@ -39,8 +39,8 @@
         android:textColor="#FFF"
         android:textSize="20dp"
         android:background="@drawable/button_bckgrnd"
-        android:layout_below="@+id/password"
-        android:layout_alignStart="@+id/password" />
+        android:layout_below="@+id/new_pin"
+        android:layout_alignStart="@+id/new_pin" />
 
     <TextView
         android:id="@+id/textView9"
@@ -54,7 +54,7 @@
         android:textStyle="bold" />
 
     <EditText
-        android:id="@+id/password"
+        android:id="@+id/new_pin"
         android:layout_width="300dp"
         android:layout_height="45dp"
         android:layout_alignStart="@+id/usernamex"

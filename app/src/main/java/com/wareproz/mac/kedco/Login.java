@@ -36,9 +36,9 @@ public class Login extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         connectionDetector = new ConnectionDetector(this);
-        login_button = (Button) findViewById(R.id.login);
+        login_button = (Button) findViewById(R.id.changepass);
         txtusername = (TextView) findViewById(R.id.usernamex);
-        txtpassword = (TextView) findViewById(R.id.password);
+        txtpassword = (TextView) findViewById(R.id.new_pin);
         register = (TextView) findViewById(R.id.textView3);
 
         // Session Manager
