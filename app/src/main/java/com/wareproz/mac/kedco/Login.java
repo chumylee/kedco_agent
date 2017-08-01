@@ -96,6 +96,12 @@ public class Login extends AppCompatActivity {
 
     }
 
+    @Override
+    public void onBackPressed()
+    {
+        // super.onBackPressed(); // Comment this super call to avoid calling finish() or fragmentmanager's backstack pop operation.
+    }
+
     private class LoginUser extends AsyncTask<Void, Void, Void> {
 
         String json_status,id, fullname, role, staff_id, email, phone, msg, customers, mdcustomers, grid;

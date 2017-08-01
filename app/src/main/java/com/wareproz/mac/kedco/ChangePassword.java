@@ -3,9 +3,9 @@ package com.wareproz.mac.kedco;
 import android.app.AlertDialog;
 import android.app.ProgressDialog;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -169,9 +169,7 @@ public class ChangePassword extends BaseActivity  {
                         new DialogInterface.OnClickListener() {
                             @Override
                             public void onClick(DialogInterface arg0, int arg1) {
-                                Intent mIntent = new Intent(ChangePassword.this, HomeActivity.class);
-                                startActivity(mIntent);
-                                finish();
+                                new LogoutUser().execute();
                             }
                         });
 
@@ -182,6 +180,80 @@ public class ChangePassword extends BaseActivity  {
                 //
                 Toast.makeText(ChangePassword.this,message,Toast.LENGTH_LONG).show();
             }
+        }
+
+    }
+
+    private class LogoutUser extends AsyncTask<Void, Void, Void> {
+
+        String json_status, json_message;
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+            // Showing progress dialog
+            pDialog = new ProgressDialog(ChangePassword.this);
+            pDialog.setMessage("Logging Out...");
+            pDialog.setCancelable(false);
+            pDialog.show();
+
+        }
+
+        @Override
+        protected Void doInBackground(Void... arg0) {
+            HttpHandler sh = new HttpHandler();
+
+            // Making a request to url and getting response
+            String url = "logout.php?username="+ staff_id;
+            String jsonStr = sh.makeServiceCall(url);
+
+            if (jsonStr != null) {
+                try {
+                    JSONObject jsonObj = new JSONObject(jsonStr);
+
+                    json_status = jsonObj.getString("status");
+                    json_message = jsonObj.getString("msg");
+
+                    //JSONArray contacts = jsonObj.getJSONArray("contacts");
+
+                } catch (final JSONException e) {
+                    runOnUiThread(new Runnable() {
+                        @Override
+                        public void run() {
+                            Toast.makeText(getApplicationContext(),
+                                    "Json parsing error: " + e.getMessage(),
+                                    Toast.LENGTH_LONG)
+                                    .show();
+                        }
+                    });
+
+                }
+            } else {
+                runOnUiThread(new Runnable() {
+                    @Override
+                    public void run() {
+                        Toast.makeText(getApplicationContext(),
+                                "Couldn't get json from server. Check LogCat for possible errors!",
+                                Toast.LENGTH_LONG)
+                                .show();
+                    }
+                });
+
+            }
+
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(Void result) {
+            super.onPostExecute(result);
+            if(json_status.equals("1")){
+                session.logoutUser();
+            }
+            // Dismiss the progress dialog
+            if (pDialog.isShowing())
+                pDialog.dismiss();
+            Log.d("TAG", json_message);
         }
 
     }

@@ -11,6 +11,8 @@ import android.widget.Toast;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.HashMap;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
@@ -103,6 +105,13 @@ public class FaultReportingConfirmation extends BaseActivity implements SeekBar.
         @Override
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
+
+            // Making a request to url and getting response
+            try {
+                billDate = URLEncoder.encode(billDate, "utf-8");
+            } catch (UnsupportedEncodingException e) {
+                e.printStackTrace();
+            }
 
             // Making a request to url and getting response
             String url = "faultSubmit.php?customer_id="+ customerId +"&bill_period="+ billDate +"&salesrep="+ cid;
