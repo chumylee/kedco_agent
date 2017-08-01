@@ -14,7 +14,8 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".SplashScreen"
-            android:theme="@style/Theme.AppCompat.NoActionBar">
+            android:theme="@style/Theme.AppCompat.NoActionBar"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,105 +24,136 @@
         </activity>
         <activity
             android:name=".Login"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".HomeActivity"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".BillDistribution"
             android:label="Bill Distribution"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".BillDistributionConfirmation"
             android:label="Confirm Bill"
-            android:parentActivityName=".BillDistribution" />
+            android:parentActivityName=".BillDistribution"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Register"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterReading"
             android:label="MD Meter Reading"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterReadingConfirmation"
             android:label="Confirm MD Meter Reading"
-            android:parentActivityName=".MeterReading" />
+            android:parentActivityName=".MeterReading"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".GridMeterReading"
             android:label="Grid Meter Reading"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".GridMeterReadingConfirmation"
             android:label="Confirm Grid Meter Reading"
-            android:parentActivityName=".GridMeterReading" />
+            android:parentActivityName=".GridMeterReading"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterInstallation"
             android:label="Meter Installation"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterInstallationConfirmation"
             android:label="Meter Installation Confirmation"
-            android:parentActivityName=".MeterInstallation" />
+            android:parentActivityName=".MeterInstallation"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DisconnectionRequest"
             android:label="Disconnection Request"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".DisconnectionRequestConfirmation"
             android:label="Disconnection Request Confirmation"
-            android:parentActivityName=".DisconnectionRequest" />
+            android:parentActivityName=".DisconnectionRequest"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ReconnectionRequest"
             android:label="Reconnection Request"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".ReconnectionRequestConfirmation"
             android:label="Reconnection Request Confirmation"
-            android:parentActivityName=".ReconnectionRequest" />
+            android:parentActivityName=".ReconnectionRequest"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".TariffAdjustmentRequest"
             android:label="Tariff Adjustment Request"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".TariffAdjustmentConfirmation"
             android:label="Tariff Adjustment Confirmation"
-            android:parentActivityName=".TariffAdjustmentRequest" />
+            android:parentActivityName=".TariffAdjustmentRequest"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterBypassCheck"
             android:label="Meter Bypass Check"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterBypassConfirmation"
             android:label="Meter Bypass Confirmation"
-            android:parentActivityName=".MeterBypassCheck" />
+            android:parentActivityName=".MeterBypassCheck"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".FaultReporting"
             android:label="Fault Reporting"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".FaultReportingConfirmation"
             android:label="Fault Reporting Confirmation"
-            android:parentActivityName=".FaultReporting" />
+            android:parentActivityName=".FaultReporting"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Disconnection"
             android:label="Disconnection"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".Reconnection"
             android:label="Reconnection"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".TariffAdjustment"
             android:label="Tariff Adjustment"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".MeterBypassConf"
             android:label="Confirm Bypass"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
         <activity
             android:name=".FaultHandling"
             android:label="Fault Handling"
-            android:parentActivityName=".HomeActivity" />
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
+        <activity
+            android:name=".ChangePassword"
+            android:label="Change Password"
+            android:parentActivityName=".HomeActivity"
+            android:screenOrientation="portrait"/>
 
         <service android:name=".FirebaseMessagingService">
             <intent-filter>
@@ -136,7 +168,9 @@
 
         <activity
             android:name=".Unlocker"
-            android:theme="@style/Theme.AppCompat.Light.NoActionBar" />
+            android:theme="@style/Theme.AppCompat.Light.NoActionBar"
+            android:screenOrientation="portrait"/>
+        
         <activity android:name=".BaseActivity" />
     </application>
 

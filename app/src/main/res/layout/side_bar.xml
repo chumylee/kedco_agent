@@ -31,57 +31,58 @@
                 android:layout_height="40dp" />
 
             <TextView
-                android:text="Iweama Chukwuma Patrick"
+                android:text="Iweama"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="13dp"
-                android:id="@+id/usersname"
+                android:id="@+id/role"
                 android:layout_alignBottom="@+id/imageView7"
                 android:layout_alignParentStart="true"
-                android:textColor="#fff"
-                android:textSize="16sp"
+                android:textColor="#F8DC09"
+                android:textSize="14sp"
                 android:textStyle="bold" />
 
             <TextView
-                android:text="Welcome,"
+                android:id="@+id/username"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_above="@+id/usersname"
-                android:layout_alignStart="@+id/usersname"
+                android:layout_above="@+id/role"
+                android:layout_alignStart="@+id/role"
                 android:layout_marginBottom="2dp"
-                android:id="@+id/textView11"
-                android:textColor="#F8DC09"
-                android:textSize="14sp" />
+                android:text="Iweama Chukwuma Patrick"
+                android:textColor="#fff"
+                android:textSize="16sp"
+                android:textStyle="bold" />
 
         </RelativeLayout>
 
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@+id/relativeLayout"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="15dp"
+            android:layout_below="@+id/relativeLayout"
+            android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:layout_marginLeft="20dp">
+            android:layout_marginTop="15dp"
+            android:onClick="changepass">
 
             <ImageView
+                android:id="@+id/imageView8"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                app:srcCompat="@drawable/padlock"
-                android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:id="@+id/imageView8" />
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/padlock" />
 
             <TextView
-                android:text="Reset Pin"
+                android:id="@+id/textView12"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="21dp"
-                android:id="@+id/textView12"
-                android:textSize="16sp"
-                android:layout_toRightOf="@+id/imageView8"
                 android:layout_centerVertical="true"
-                />
+                android:layout_marginStart="21dp"
+                android:layout_toRightOf="@+id/imageView8"
+                android:text="Change Pin"
+                android:textSize="16sp" />
         </RelativeLayout>
 
         <View
@@ -93,34 +94,33 @@
             android:background="#999999"/>
 
         <RelativeLayout
+            android:id="@+id/logx"
             android:layout_width="match_parent"
             android:layout_height="40dp"
-            android:layout_below="@+id/logoutx"
             android:layout_alignParentStart="true"
-            android:layout_marginTop="10dp"
-            android:layout_marginRight="20dp"
+            android:layout_below="@+id/logoutx"
             android:layout_marginLeft="20dp"
-            android:onClick="logoutx"
-            android:id="@+id/logx">
+            android:layout_marginRight="20dp"
+            android:layout_marginTop="10dp"
+            android:onClick="logoutx">
 
             <ImageView
+                android:id="@+id/imageView9"
                 android:layout_width="25dp"
                 android:layout_height="25dp"
-                app:srcCompat="@drawable/logout"
-                android:layout_centerVertical="true"
                 android:layout_alignParentStart="true"
-                android:id="@+id/imageView9"/>
+                android:layout_centerVertical="true"
+                app:srcCompat="@drawable/logout" />
 
             <TextView
-                android:text="Logout"
+                android:id="@+id/textView13"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="21dp"
-                android:id="@+id/textView13"
-                android:textSize="16sp"
-                android:layout_toRightOf="@+id/imageView9"
                 android:layout_centerVertical="true"
-                />
+                android:layout_marginStart="21dp"
+                android:layout_toRightOf="@+id/imageView9"
+                android:text="Logout"
+                android:textSize="16sp" />
         </RelativeLayout>
 
 

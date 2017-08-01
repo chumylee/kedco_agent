@@ -25,6 +25,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
+
 public class MeterBypassConf extends BaseActivity {
 
     private String TAG = Disconnection.class.getSimpleName();
@@ -32,6 +34,7 @@ public class MeterBypassConf extends BaseActivity {
 
     // Session Manager Class
     SessionManagement session;
+    String cid, fullname, role, staff_id, email, phone, customers;
     private ProgressDialog pDialog;
     private ListView lv;
     private boolean meterBypassed = false;
@@ -48,6 +51,17 @@ public class MeterBypassConf extends BaseActivity {
 
         // Session Manager
         session = new SessionManagement(getApplicationContext());
+
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        cid = user.get(KEY_ID);
+        fullname = user.get(SessionManagement.FULLNAME);
+        role = user.get(SessionManagement.ROLE);
+        staff_id = user.get(SessionManagement.KEY_STAFFID);
+        email = user.get(SessionManagement.EMAIL);
+        phone = user.get(SessionManagement.PHONE);
+        customers = user.get(SessionManagement.CUSTOMERS);
 
         contactList = new ArrayList<>();
 
@@ -79,6 +93,7 @@ public class MeterBypassConf extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
+            String url = "meterbypass.php?role="+ role +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
@@ -99,7 +114,7 @@ public class MeterBypassConf extends BaseActivity {
                         String email = "Account Number: " + c.getString("accountnumber");
                         String address = "Customer Address: " + c.getString("address");
                         String bypass = "Bypass: " + c.getString("bypass");
-
+                        String reqby = "Requested By: " + c.getString("reqby");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -130,6 +145,7 @@ public class MeterBypassConf extends BaseActivity {
                         contact.put("mobile", address);
                         contact.put("date", date);
                         contact.put("bypass", bypass);
+                        contact.put("reqby", reqby);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -176,8 +192,8 @@ public class MeterBypassConf extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     MeterBypassConf.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "bypass", "date", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id});
+                    "mobile", "bypass", "date", "id", "reqby"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id, R.id.reqby});
 
             lv.setAdapter(adapter);
 
@@ -186,29 +202,37 @@ public class MeterBypassConf extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position,
                                         long id) {
 
-                    selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
+                    if (Integer.parseInt(role) != 3){
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MeterBypassConf.this);
-                    alertDialogBuilder.setMessage("Is this meter bypassed by the customer?");
-                    alertDialogBuilder.setPositiveButton("yes",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface arg0, int arg1) {
-                                    meterBypassed = true;
-                                    new MeterBypassConf.confirmer().execute();
-                                }
-                            });
+                        Toast.makeText(MeterBypassConf.this,"You dont have permission to perform this action",Toast.LENGTH_LONG).show();
 
-                    alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //finish();
-                            meterBypassed = false;
-                            new MeterBypassConf.confirmer().execute();
-                        }
-                    });
+                    }else {
 
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
+                        selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
+
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(MeterBypassConf.this);
+                        alertDialogBuilder.setMessage("Is this meter bypassed by the customer?");
+                        alertDialogBuilder.setPositiveButton("yes",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        meterBypassed = true;
+                                        new MeterBypassConf.confirmer().execute();
+                                    }
+                                });
+
+                        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //finish();
+                                meterBypassed = false;
+                                new MeterBypassConf.confirmer().execute();
+                            }
+                        });
+
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+
+                    }
 
                 }
             });

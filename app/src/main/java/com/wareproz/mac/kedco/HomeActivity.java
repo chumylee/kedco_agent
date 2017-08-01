@@ -17,6 +17,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Objects;
 
 import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 
@@ -57,8 +58,43 @@ public class HomeActivity extends BaseActivity  {
         grid = user.get(SessionManagement.GRID);
 
 
-        TextView namefield = (TextView) findViewById(R.id.usersname);
+        TextView namefield = (TextView) findViewById(R.id.username);
         namefield.setText(fullname);
+
+        TextView rolefield = (TextView) findViewById(R.id.role);
+
+        if (Objects.equals(role, "1")){
+            rolefield.setText("Sales Rep");
+        }
+
+        if (Objects.equals(role, "2")){
+            rolefield.setText("CSP Supervisor");
+        }
+
+        if (Objects.equals(role, "3")){
+            rolefield.setText("TSP TE");
+        }
+
+        if (Objects.equals(role, "4")){
+            rolefield.setText("Billing Department");
+        }
+
+        if (Objects.equals(role, "5")){
+            rolefield.setText("Regional Manager");
+        }
+
+        if (Objects.equals(role, "6")){
+            rolefield.setText("Others (Ogas)");
+        }
+
+        if (Objects.equals(role, "7")){
+            rolefield.setText("Metering Engineer");
+        }
+
+        if (Objects.equals(role, "8")){
+            rolefield.setText("Loss Reduction Officer");
+        }
+
 
         RelativeLayout bill_distribution = (RelativeLayout) findViewById(R.id.bill_distribution);
         RelativeLayout meter_reading = (RelativeLayout) findViewById(R.id.meter_reading);
@@ -75,24 +111,29 @@ public class HomeActivity extends BaseActivity  {
         RelativeLayout fault_handling = (RelativeLayout) findViewById(R.id.fault_handling);
         RelativeLayout grid_meter_reading = (RelativeLayout) findViewById(R.id.grid_meter_reading);
 
-        fault_reporting.setAlpha(1);
-
 
         if (Integer.parseInt(role) == 1){
             bill_distribution.setAlpha(1);
             meter_bypass_check.setAlpha(1);
+            fault_reporting.setAlpha(1);
+
+            fault_handling.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 2){
             bill_distribution.setAlpha(1);
             meter_bypass_check.setAlpha(1);
+            fault_reporting.setAlpha(1);
 
             disconnection_request.setAlpha(1);
             reconnection_request.setAlpha(1);
             tarriff_adjustment_request.setAlpha(1);
+            meter_bypass_confirmation.setAlpha(1);
 
             disconnection.setAlpha(1);
             reconnection.setAlpha(1);
+            tarriff_adjustment.setAlpha(1);
+            fault_handling.setAlpha(1);
         }
 
         if (Integer.parseInt(role) == 3){
@@ -188,7 +229,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void tarriff_adjustment(View v) {
 
-        if (Integer.parseInt(role) == 4){
+        if (Integer.parseInt(role) == 4 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, TariffAdjustment.class);
             startActivity(changer);
         }
@@ -206,7 +247,7 @@ public class HomeActivity extends BaseActivity  {
 
     public void meter_bypass_confirmation(View v) {
 
-        if (Integer.parseInt(role) == 3){
+        if (Integer.parseInt(role) == 3 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, MeterBypassConf.class);
             startActivity(changer);
         }
@@ -215,16 +256,16 @@ public class HomeActivity extends BaseActivity  {
 
     public void fault_reporting(View v) {
 
-        //if (Integer.parseInt(role) == 1  || Integer.parseInt(role) == 2){
+        if (Integer.parseInt(role) == 1  || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, FaultReporting.class);
             startActivity(changer);
-        //}
+        }
 
     }
 
     public void fault_handling(View v) {
 
-        if (Integer.parseInt(role) == 3){
+        if (Integer.parseInt(role) == 3 || Integer.parseInt(role) == 1 || Integer.parseInt(role) == 2){
             Intent changer = new Intent(this, FaultHandling.class);
             startActivity(changer);
         }
@@ -243,6 +284,11 @@ public class HomeActivity extends BaseActivity  {
     public void logoutx(View v) {
         //new LogoutUser().execute();
         new LogoutUser().execute();
+    }
+
+    public void changepass(View v) {
+        Intent changer = new Intent(this, ChangePassword.class);
+        startActivity(changer);
     }
 
     public void sdmenu(View v) {

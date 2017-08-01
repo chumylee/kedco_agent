@@ -91,6 +91,7 @@ public class Reconnection extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
+            String url = "reconnection.php?role="+ role +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
@@ -111,6 +112,7 @@ public class Reconnection extends BaseActivity {
                         String email = "Account Number: "+c.getString("accountnumber");
                         String address = "Customer Address: "+c.getString("address");
                         String reason = "Reason: "+c.getString("reason");
+                        String reqby = "Requested By: " + c.getString("reqby");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -141,6 +143,7 @@ public class Reconnection extends BaseActivity {
                         contact.put("mobile", address);
                         contact.put("reason", reason);
                         contact.put("date",date);
+                        contact.put("reqby", reqby);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -187,8 +190,8 @@ public class Reconnection extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     Reconnection.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "reason", "date", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id});
+                    "mobile", "reason", "date", "id", "reqby"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id, R.id.reqby});
 
             lv.setAdapter(adapter);
 

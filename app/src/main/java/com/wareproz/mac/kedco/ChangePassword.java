@@ -1,10 +1,11 @@
 package com.wareproz.mac.kedco;
 
+import android.app.AlertDialog;
 import android.app.ProgressDialog;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.AsyncTask;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,54 +15,73 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.HashMap;
+import java.util.Objects;
 
-public class Unlocker extends AppCompatActivity {
+import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
 
-    Button login_button;
-    TextView txtpassword;
+public class ChangePassword extends BaseActivity  {
+
+    Button changepass;
+    TextView oldpin, newpin, confirmpin;
     ConnectionDetector connectionDetector;
-    String username, password, staff_id;
+    String old_pin, new_pin, confirm_pin;
 
     private ProgressDialog pDialog;
-
     // Session Manager Class
     SessionManagement session;
+    String cid, fullname, role, staff_id, email, phone, customers;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_unlocker);
+        setContentView(R.layout.activity_change_password);
 
         connectionDetector = new ConnectionDetector(this);
-        login_button = (Button) findViewById(R.id.changepass);
-        txtpassword = (TextView) findViewById(R.id.new_pin);
+        oldpin = (TextView) findViewById(R.id.old_pin);
+        newpin = (TextView) findViewById(R.id.new_pin);
+        confirmpin = (TextView) findViewById(R.id.confirm_pin);
+        changepass = (Button) findViewById(R.id.changepass);
 
         // Session Manager
         session = new SessionManagement(getApplicationContext());
 
         // get user data from session
         HashMap<String, String> user = session.getUserDetails();
-        staff_id = user.get(SessionManagement.KEY_STAFFID);
 
-        login_button.setOnClickListener(new View.OnClickListener() {
+        cid = user.get(KEY_ID);
+        fullname = user.get(SessionManagement.FULLNAME);
+        role = user.get(SessionManagement.ROLE);
+        staff_id = user.get(SessionManagement.KEY_STAFFID);
+        email = user.get(SessionManagement.EMAIL);
+        phone = user.get(SessionManagement.PHONE);
+        customers = user.get(SessionManagement.CUSTOMERS);
+
+
+        changepass.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 //check if there is internet access
                 if(!connectionDetector.isConnectingToInternet()){
 
-                    Toast.makeText(Unlocker.this,"Internet Network Not Avaliable",Toast.LENGTH_LONG).show();
+                    Toast.makeText(ChangePassword.this,"Internet Network Not Avaliable",Toast.LENGTH_LONG).show();
 
                 }else {
 
-                    username = staff_id;
-                    password = txtpassword.getText().toString();
+                    old_pin = oldpin.getText().toString();
+                    new_pin = newpin.getText().toString();
+                    confirm_pin = confirmpin.getText().toString();
 
-                    if(password.trim().length() > 0){
+                    if(old_pin.trim().length() > 0 && new_pin.trim().length() > 0 && confirm_pin.trim().length() > 0){
 
-                        new Unlocker.LoginUser().execute();
+                        if (Objects.equals(new_pin, confirm_pin)){
+                            new ChangePass().execute();
+                        }else {
+                            Toast.makeText(ChangePassword.this,"New PIN Mismatch",Toast.LENGTH_LONG).show();
+                        }
 
                     }else{
-                        Toast.makeText(Unlocker.this,"Enter correct pin to unlock",Toast.LENGTH_LONG).show();
+                        Toast.makeText(ChangePassword.this,"All fields are compulsory",Toast.LENGTH_LONG).show();
 
                     }
 
@@ -69,18 +89,19 @@ public class Unlocker extends AppCompatActivity {
 
             }
         });
+
     }
 
-    private class LoginUser extends AsyncTask<Void, Void, Void> {
+    private class ChangePass extends AsyncTask<Void, Void, Void> {
 
-        String json_status;
+        String json_status,id, message;
 
         @Override
         protected void onPreExecute() {
             super.onPreExecute();
             // Showing progress dialog
-            pDialog = new ProgressDialog(Unlocker.this);
-            pDialog.setMessage("Unlocking ...");
+            pDialog = new ProgressDialog(ChangePassword.this);
+            pDialog.setMessage("Please wait...");
             pDialog.setCancelable(false);
             pDialog.show();
 
@@ -90,7 +111,8 @@ public class Unlocker extends AppCompatActivity {
         protected Void doInBackground(Void... arg0) {
             HttpHandler sh = new HttpHandler();
 
-            String url = "unlock.php?username="+ username +"&password="+ password;
+            // Making a request to url and getting response
+            String url = "changepassword.php?oldpass="+ old_pin +"&newpass="+ new_pin +"&confirmpass="+ confirm_pin +"&staff_id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
 
@@ -99,6 +121,7 @@ public class Unlocker extends AppCompatActivity {
                     JSONObject jsonObj = new JSONObject(jsonStr);
 
                     json_status = jsonObj.getString("status");
+                    message = jsonObj.getString("message");
 
                     //JSONArray customerz = jsonObj.getJSONArray("customers");
 
@@ -140,15 +163,27 @@ public class Unlocker extends AppCompatActivity {
             //do something with what is returned
             if (json_status.equals("1")){
                 //open home page
-                Intent mIntent = new Intent(Unlocker.this, HomeActivity.class);
-                startActivity(mIntent);
-                finish();
+                AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(ChangePassword.this);
+                alertDialogBuilder.setMessage(message);
+                alertDialogBuilder.setPositiveButton("Ok",
+                        new DialogInterface.OnClickListener() {
+                            @Override
+                            public void onClick(DialogInterface arg0, int arg1) {
+                                Intent mIntent = new Intent(ChangePassword.this, HomeActivity.class);
+                                startActivity(mIntent);
+                                finish();
+                            }
+                        });
+
+                AlertDialog alertDialog = alertDialogBuilder.create();
+                alertDialog.show();
 
             }else{
                 //
-                Toast.makeText(Unlocker.this,"Unable to Unlock, pls try again or contact admin",Toast.LENGTH_LONG).show();
+                Toast.makeText(ChangePassword.this,message,Toast.LENGTH_LONG).show();
             }
         }
 
     }
+
 }

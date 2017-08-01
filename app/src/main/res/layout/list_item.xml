@@ -56,4 +56,12 @@
         android:layout_height="wrap_content"
         android:textStyle="bold"
         android:visibility="gone"/>
+
+    <TextView
+        android:id="@+id/reqby"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="#5d5d5d"
+        android:textStyle="bold" />
+
 </LinearLayout>

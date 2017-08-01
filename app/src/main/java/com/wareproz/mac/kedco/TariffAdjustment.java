@@ -25,6 +25,8 @@ import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
+import static com.wareproz.mac.kedco.SessionManagement.KEY_ID;
+
 public class TariffAdjustment extends BaseActivity {
 
     private String TAG = Disconnection.class.getSimpleName();
@@ -32,6 +34,7 @@ public class TariffAdjustment extends BaseActivity {
 
     // Session Manager Class
     SessionManagement session;
+    String cid, fullname, role, staff_id, email, phone, customers;
     private ProgressDialog pDialog;
     private ListView lv;
 
@@ -47,6 +50,17 @@ public class TariffAdjustment extends BaseActivity {
 
         // Session Manager
         session = new SessionManagement(getApplicationContext());
+
+        // get user data from session
+        HashMap<String, String> user = session.getUserDetails();
+
+        cid = user.get(KEY_ID);
+        fullname = user.get(SessionManagement.FULLNAME);
+        role = user.get(SessionManagement.ROLE);
+        staff_id = user.get(SessionManagement.KEY_STAFFID);
+        email = user.get(SessionManagement.EMAIL);
+        phone = user.get(SessionManagement.PHONE);
+        customers = user.get(SessionManagement.CUSTOMERS);
 
         contactList = new ArrayList<>();
 
@@ -78,6 +92,7 @@ public class TariffAdjustment extends BaseActivity {
             HttpHandler sh = new HttpHandler();
 
             // Making a request to url and getting response
+            String url = "tariffadjustment.php?role="+ role +"&id="+ staff_id;
             String jsonStr = sh.makeServiceCall(url);
 
             Log.e(TAG, "Response from url: " + jsonStr);
@@ -99,6 +114,7 @@ public class TariffAdjustment extends BaseActivity {
                         String address = "Customer Address: "+ c.getString("address");
                         String oldTariff = "Current Tariff: "+c.getString("wrong_tariff");
                         String newTariff = "New Tariff: "+ c.getString("right_tariff");
+                        String reqby = "Requested By: " + c.getString("reqby");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -131,6 +147,7 @@ public class TariffAdjustment extends BaseActivity {
                         contact.put("old_tariff", oldTariff);
                         contact.put("new_tariff", newTariff);
                         contact.put("date", date);
+                        contact.put("reqby", reqby);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -177,8 +194,8 @@ public class TariffAdjustment extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     TariffAdjustment.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "old_tariff", "new_tariff", "date", "id"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.date, R.id.id});
+                    "mobile", "old_tariff", "new_tariff", "date", "id", "reqby"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.date, R.id.id, R.id.reqby});
 
             lv.setAdapter(adapter);
 
@@ -187,28 +204,33 @@ public class TariffAdjustment extends BaseActivity {
                 public void onItemClick(AdapterView<?> parent, View view, int position,
                                         long id) {
 
-                    selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
+                    if (Integer.parseInt(role) != 4){
 
-                    AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TariffAdjustment.this);
-                    alertDialogBuilder.setMessage("Are you sure you have performed the proper tariff adjustment for this customer?");
-                    alertDialogBuilder.setPositiveButton("yes",
-                            new DialogInterface.OnClickListener() {
-                                @Override
-                                public void onClick(DialogInterface arg0, int arg1) {
-                                    new TariffAdjustment.confirmer().execute();
-                                }
-                            });
+                        Toast.makeText(TariffAdjustment.this,"You dont have permission to perform this action",Toast.LENGTH_LONG).show();
 
-                    alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            //finish();
-                        }
-                    });
+                    }else {
+                        selecteditem = ((TextView)view.findViewById(R.id.id)).getText().toString();
 
-                    AlertDialog alertDialog = alertDialogBuilder.create();
-                    alertDialog.show();
+                        AlertDialog.Builder alertDialogBuilder = new AlertDialog.Builder(TariffAdjustment.this);
+                        alertDialogBuilder.setMessage("Are you sure you have performed the proper tariff adjustment for this customer?");
+                        alertDialogBuilder.setPositiveButton("yes",
+                                new DialogInterface.OnClickListener() {
+                                    @Override
+                                    public void onClick(DialogInterface arg0, int arg1) {
+                                        new TariffAdjustment.confirmer().execute();
+                                    }
+                                });
 
+                        alertDialogBuilder.setNegativeButton("No",new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int which) {
+                                //finish();
+                            }
+                        });
 
+                        AlertDialog alertDialog = alertDialogBuilder.create();
+                        alertDialog.show();
+
+                    }
                 }
             });
         }
