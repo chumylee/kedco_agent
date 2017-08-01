@@ -113,6 +113,7 @@ public class Reconnection extends BaseActivity {
                         String address = "Customer Address: "+c.getString("address");
                         String reason = "Reason: "+c.getString("reason");
                         String reqby = "Requested By: " + c.getString("reqby");
+                        String csp = "CSP: " + c.getString("csp");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -144,6 +145,7 @@ public class Reconnection extends BaseActivity {
                         contact.put("reason", reason);
                         contact.put("date",date);
                         contact.put("reqby", reqby);
+                        contact.put("csp", csp);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -190,8 +192,8 @@ public class Reconnection extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     Reconnection.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "reason", "date", "id", "reqby"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id, R.id.reqby});
+                    "mobile", "reason", "date", "id", "reqby", "csp"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id, R.id.reqby, R.id.csp});
 
             lv.setAdapter(adapter);
 

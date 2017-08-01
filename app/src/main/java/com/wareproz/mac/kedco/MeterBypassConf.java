@@ -115,6 +115,7 @@ public class MeterBypassConf extends BaseActivity {
                         String address = "Customer Address: " + c.getString("address");
                         String bypass = "Bypass: " + c.getString("bypass");
                         String reqby = "Requested By: " + c.getString("reqby");
+                        String csp = "CSP: " + c.getString("csp");
                         SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
                         SimpleDateFormat formatter2 = new SimpleDateFormat("dd/MM/yyyy hh:mm a");
                         Date parsedDate = null;
@@ -146,6 +147,7 @@ public class MeterBypassConf extends BaseActivity {
                         contact.put("date", date);
                         contact.put("bypass", bypass);
                         contact.put("reqby", reqby);
+                        contact.put("csp", csp);
 
                         // adding contact to contact list
                         contactList.add(contact);
@@ -192,8 +194,8 @@ public class MeterBypassConf extends BaseActivity {
             ListAdapter adapter = new SimpleAdapter(
                     MeterBypassConf.this, contactList,
                     R.layout.list_item, new String[]{"name", "email",
-                    "mobile", "bypass", "date", "id", "reqby"}, new int[]{R.id.name,
-                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id, R.id.reqby});
+                    "mobile", "bypass", "date", "id", "reqby", "csp"}, new int[]{R.id.name,
+                    R.id.email, R.id.mobile, R.id.reason, R.id.new_tariff, R.id.id, R.id.reqby, R.id.csp});
 
             lv.setAdapter(adapter);
 
